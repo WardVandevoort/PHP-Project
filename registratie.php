@@ -1,6 +1,18 @@
 <?php
 
-include_once("classes/userRegistration.php");
+include_once(__DIR__ . "/classes/userRegistration.php");
+
+if(!empty($_POST)){
+    try {
+        $user = new User();
+        $user->setFirstName($_POST["firstName"]);
+        
+        $user->save();
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+};
+
 
 ?>
 
