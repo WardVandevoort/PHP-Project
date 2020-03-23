@@ -6,6 +6,13 @@ if(!empty($_POST)){
     try {
         $user = new User();
         $user->setFirstName($_POST["firstName"]);
+        $user->setLastName($_POST["lastName"]);
+        $user->setEmail($_POST["email"]);
+        $user->setPassword($_POST["password"]);
+        $user->setPasswordConfirmation($_POST["passwordConfirmation"]);
+        $user->setYear($_POST["year"]);
+        $user->setPassion($_POST["passion"]);
+        $user->setHobby($_POST["hobby"]);
         
         $user->save();
     } catch (\Throwable $th) {
@@ -64,9 +71,9 @@ if(!empty($_POST)){
 <div>
     <label for="year">Jaar</label>
     <select name="year" id="year">
-        <option value="1imd" selected="selected">1 IMD 👶</option>
-        <option value="2imd">2 IMD 👩👨</option>
-        <option value="3imd">3 IMD 🧓👴</option>
+        <option value="1IMD" selected="selected">1 IMD 👶</option>
+        <option value="2IMD">2 IMD 👩👨</option>
+        <option value="3IMD">3 IMD 🧓👴</option>
     </select>
 </div>
 
@@ -75,16 +82,16 @@ if(!empty($_POST)){
     <select name="passion" id="passion">
         <option value="design" selected="selected">Design 🖌</option>
         <option value="development">Development 💻</option>
-        <option value="both">Design&Development 🖌💻</option>
+        <option value="design&development">Design&Development 🖌💻</option>
     </select>
 </div>
 
 <div>
     <label for="hobby">Hobby</label>
     <select name="hobby" id="hobby">
-        <option value="game" selected="selected">Gamen 🎮</option>
-        <option value="movies">Films/series kijken 📺</option>
-        <option value="sport">Sporten 💪</option>
+        <option value="gamen" selected="selected">Gamen 🎮</option>
+        <option value="films&series kijken">Films/series kijken 📺</option>
+        <option value="sporten">Sporten 💪</option>
         <!--mogelijkheid om extra opties toe te voegen-->
     </select>
 </div>

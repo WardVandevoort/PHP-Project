@@ -20,3 +20,5 @@ include_once(__DIR__ . "/../settings/settings.php");
 
 }
 }
+
+?>
