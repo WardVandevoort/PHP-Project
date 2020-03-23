@@ -1,3 +1,10 @@
+<?php
+
+include_once("classes/userRegistration.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
