@@ -1,3 +1,9 @@
+<?php 
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +12,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Dit is de homepage</h1>
+
+<?php include_once("inc.nav.php"); ?>
+
+<h1>Dit is de homepage</h1>
+
 </body>
 </html>
