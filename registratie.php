@@ -69,11 +69,19 @@ if(!empty($_POST)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/registratie.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@500;700&display=swap');
+    </style> 
     <title>Document</title>
 </head>
 <body>
     
 <section>
+
+<div id="logo-container">
+    <img src="images/logo.png" alt="logo">
+</div>
 
 <form action="" method="post">
 
@@ -99,17 +107,17 @@ if(!empty($_POST)){
 </div>
 
 <div>
-    <label for="password">Paswoord</label>
+    <label for="password">Wachtwoord</label>
     <input type="password" id="password" name="password">
 </div>
 
 <div>
-    <label for="passwordConfirmation">Bevestig je paswoord</label>
+    <label for="passwordConfirmation">Bevestig je wachtwoord</label>
 	<input type="password" id="passwordConfirmation" name="passwordConfirmation">
 </div>
 
 <div>
-	<input type="submit" value="Maak account">	
+	<input type="submit" id="submitBtn" value="Bevestig">	
 </div>
 
 </form>
