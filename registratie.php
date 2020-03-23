@@ -2,6 +2,10 @@
 
 include_once(__DIR__ . "/classes/userRegistration.php");
 
+$emailVerification = true;
+$required = "@student.thomasmore.be";
+$requiredVerification = true;
+
 if(!empty($_POST)){
     try {
         $user = new User();
@@ -10,14 +14,41 @@ if(!empty($_POST)){
         $user->setEmail($_POST["email"]);
         $user->setPassword($_POST["password"]);
         $user->setPasswordConfirmation($_POST["passwordConfirmation"]);
-        $user->setYear($_POST["year"]);
-        $user->setPassion($_POST["passion"]);
-        $user->setHobby($_POST["hobby"]);
         
-        $user->save();
+        $emailAdressen = User::getEmails();
+
+        foreach($emailAdressen as $emailAdres){
+        if($_POST["email"] == $emailAdres["email"]){
+            $emailVerification = false;
+        }
+        }
+
+        if($emailVerification == false){
+            throw new Exception("Dit emailadres is al in gebruik");
+        }
+
+        if(strpos($_POST["email"], $required) == false){
+            throw new Exception("Dit is geen geldig studenten emailadres, een geldig studenten emailadres eindigt op @student.thomasmore.be");
+            $requiredVerification = false;
+        }
+
+
+        if($emailVerification == true && $requiredVerification == true){
+            $user->save();
+        }
+        
+            
+        
+        
     } catch (\Throwable $th) {
-        //throw $th;
+        $error = $th->getMessage();
     }
+    
+
+      
+        
+    
+    
 };
 
 
@@ -39,9 +70,9 @@ if(!empty($_POST)){
 
 <h2>Maak een nieuw account</h2>
 
-<div class="error">
-    <p>hier komt een error boodschap</p>
-</div>
+<?php if(isset($error)):?>
+<div class="error" style="color: red;"><?php echo $error;?></div>
+<?php endif;?>
 
 <div>
     <label for="firstName">Voornaam</label>
@@ -66,34 +97,6 @@ if(!empty($_POST)){
 <div>
     <label for="passwordConfirmation">Bevestig je paswoord</label>
 	<input type="password" id="passwordConfirmation" name="passwordConfirmation">
-</div>
-
-<div>
-    <label for="year">Jaar</label>
-    <select name="year" id="year">
-        <option value="1IMD" selected="selected">1 IMD 👶</option>
-        <option value="2IMD">2 IMD 👩👨</option>
-        <option value="3IMD">3 IMD 🧓👴</option>
-    </select>
-</div>
-
-<div>
-    <label for="passion">Passie</label>
-    <select name="passion" id="passion">
-        <option value="design" selected="selected">Design 🖌</option>
-        <option value="development">Development 💻</option>
-        <option value="design&development">Design&Development 🖌💻</option>
-    </select>
-</div>
-
-<div>
-    <label for="hobby">Hobby</label>
-    <select name="hobby" id="hobby">
-        <option value="gamen" selected="selected">Gamen 🎮</option>
-        <option value="films&series kijken">Films/series kijken 📺</option>
-        <option value="sporten">Sporten 💪</option>
-        <!--mogelijkheid om extra opties toe te voegen-->
-    </select>
 </div>
 
 <div>

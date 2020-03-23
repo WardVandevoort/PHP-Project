@@ -8,9 +8,7 @@ class User{
     private $email;
     private $password;
     private $passwordConfirmation;
-    private $year;
-    private $passion;
-    private $hobby;
+  
 
 
     /**
@@ -28,6 +26,10 @@ class User{
      */ 
     public function setFirstName($firstName)
     {
+        if(empty($firstName)){
+            throw new Exception("Voornaam mag niet leeg zijn");
+        }
+
         $this->firstName = $firstName;
 
         return $this;
@@ -48,6 +50,10 @@ class User{
      */ 
     public function setLastName($lastName)
     {
+        if(empty($lastName)){
+            throw new Exception("Familienaam mag niet leeg zijn");
+        }
+
         $this->lastName = $lastName;
 
         return $this;
@@ -68,6 +74,10 @@ class User{
      */ 
     public function setEmail($email)
     {
+        if(empty($email)){
+            throw new Exception("Email mag niet leeg zijn");
+        }
+
         $this->email = $email;
 
         return $this;
@@ -88,6 +98,10 @@ class User{
      */ 
     public function setPassword($password)
     {
+        if(empty($password)){
+            throw new Exception("Paswoord mag niet leeg zijn");
+        }
+
         $this->password = $password;
 
         return $this;
@@ -108,67 +122,11 @@ class User{
      */ 
     public function setPasswordConfirmation($passwordConfirmation)
     {
+        if(empty($passwordConfirmation)){
+            throw new Exception("Bevestig paswoord mag niet leeg zijn");
+        }
+
         $this->passwordConfirmation = $passwordConfirmation;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of year
-     */ 
-    public function getYear()
-    {
-        return $this->year;
-    }
-
-    /**
-     * Set the value of year
-     *
-     * @return  self
-     */ 
-    public function setYear($year)
-    {
-        $this->year = $year;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of passion
-     */ 
-    public function getPassion()
-    {
-        return $this->passion;
-    }
-
-    /**
-     * Set the value of passion
-     *
-     * @return  self
-     */ 
-    public function setPassion($passion)
-    {
-        $this->passion = $passion;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of hobby
-     */ 
-    public function getHobby()
-    {
-        return $this->hobby;
-    }
-
-    /**
-     * Set the value of hobby
-     *
-     * @return  self
-     */ 
-    public function setHobby($hobby)
-    {
-        $this->hobby = $hobby;
 
         return $this;
     }
@@ -176,24 +134,20 @@ class User{
     public function save(){
         $conn = Database::getConnection();
         
-        $statement = $conn->prepare("insert into users (firstname, lastname, email, password, year, passion, hobby) 
-                                    values (:firstname, :lastname, :email, :password, :year, :passion, :hobby)");
+        $statement = $conn->prepare("insert into users (firstname, lastname, email, password) 
+                                    values (:firstname, :lastname, :email, :password)");
         
         $firstName = $this->getFirstName();
         $lastName = $this->getLastName();
         $email = $this->getEmail();
         $password = $this->getPassword();
-        $year = $this->getYear();
-        $passion = $this->getPassion();
-        $hobby = $this->getHobby();
+        
         
         $statement->bindValue(":firstname", $firstName);
         $statement->bindValue(":lastname", $lastName);
         $statement->bindValue(":email", $email);
         $statement->bindValue(":password", $password);
-        $statement->bindValue(":year", $year);
-        $statement->bindValue(":passion", $passion);
-        $statement->bindValue(":hobby", $hobby);
+        
 
         
         
@@ -203,6 +157,18 @@ class User{
         
         
     }
+
+    public static function getEmails(){
+        $conn = Database::getConnection();
+        
+        $statement = $conn->prepare("select email from users");
+        
+        $statement->execute();
+        
+        $emailAdressen = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $emailAdressen;
+        }
 
 
 }
