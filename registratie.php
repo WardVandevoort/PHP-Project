@@ -5,6 +5,7 @@ include_once(__DIR__ . "/classes/userRegistration.php");
 $emailVerification = true;
 $required = "@student.thomasmore.be";
 $requiredVerification = true;
+$passwordVerification = true;
 
 if(!empty($_POST)){
     try {
@@ -32,9 +33,17 @@ if(!empty($_POST)){
             $requiredVerification = false;
         }
 
+        if($_POST["password"] != $_POST["passwordConfirmation"]){
+            throw new Exception("De paswoorden zijn niet hetzelfde");
+            $passwordVerification = false;
+        }
 
-        if($emailVerification == true && $requiredVerification == true){
+
+        if($emailVerification == true && $requiredVerification == true && $passwordVerification == true){
             $user->save();
+
+            session_start();
+            header("Location: index.php");
         }
         
             

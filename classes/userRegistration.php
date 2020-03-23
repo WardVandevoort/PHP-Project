@@ -141,6 +141,7 @@ class User{
         $lastName = $this->getLastName();
         $email = $this->getEmail();
         $password = $this->getPassword();
+        $password = password_hash($password, PASSWORD_DEFAULT, ["cost" => 14]);
         
         
         $statement->bindValue(":firstname", $firstName);
