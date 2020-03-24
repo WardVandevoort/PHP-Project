@@ -1,5 +1,28 @@
 <?php 
 
+include_once(__DIR__ . "/classes/newUser.php");
+
+session_start();
+
+
+
+$newUser = new NewUser();
+$newUser->setEmail($_SESSION["user"]);
+
+$data = $newUser->FindData();
+
+if($data == true){
+    header("Location: profielVervolledigen.php");
+}
+
+
+
+
+
+
+
+
+
 
 
 ?>
