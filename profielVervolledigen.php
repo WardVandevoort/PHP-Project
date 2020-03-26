@@ -180,6 +180,7 @@ if(!empty($_POST)){
         <option value="Gevechtssport">Gevechtssport 👊</option>
         <option value="Tennis">Tennis 🥎</option>
         <option value="Zwemmen">Zwemmen 🏊‍♂️</option>
+        <option value="geen">Ik sport niet 😭</option>
     </select>
 </div>
 
