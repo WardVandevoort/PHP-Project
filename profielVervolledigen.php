@@ -9,24 +9,55 @@ session_start();
 $userComp = new UserComp;
 $userComp->setEmail($_SESSION["user"]);
 
+$imgSizeOk = false;
+$descLengthOK = true;
+
 if(!empty($_POST)){
     try {
+
+        $fileSize = $_FILES["avatar"]["size"];
+
+        if($fileSize < 2000000){
+            $imgSizeOk = true;
+        }
+        else{
+            throw new Exception("Je profielfoto heeft een grotere file size dan is toegelaten (max 2MB)");
+            $imgSizeOk = false;
+        }
+
+        if(strlen($_POST["description"]) <= 301){
+            $descLengthOK = true;
+        }
+        else{
+            throw new Exception("Je profieltekst is te lang (max 300 tekens)");
+            $descLengthOK = false;
+        }
+
         $img = $_FILES["avatar"]["name"];
+
         $userComp->setImagePath($img);
+        $userComp->setYear($_POST["year"]);
+        $userComp->setDescription($_POST["description"]);
+        $userComp->setProvince($_POST["province"]);
+        $userComp->setTown($_POST["town"]);
+        $userComp->setPassion($_POST["passion"]);
+        $userComp->setOs($_POST["os"]);
+        $userComp->setMovie($_POST["movie"]);
+        $userComp->setGame($_POST["game"]);
+        $userComp->setMusic($_POST["music"]);
+        $userComp->setSport($_POST["sport"]);
+       
+        if($imgSizeOk == true && $descLengthOK == true){
         $userComp->save();
-        move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img");
+        
+        move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img"); 
+        header("Location: index.php");
+        }
+       
     } catch (\Throwable $th) {
-        //throw $th;
+        $error = $th->getMessage();
     }
 }
-
-/*if(!empty($_POST)){
-    try {
-        
-    } catch (\Throwable $th) {
-        //throw $th;
-    }
-}*/
 
 ?>
 
@@ -51,14 +82,24 @@ if(!empty($_POST)){
 <?php endif;?>
 
 <div>
-<label for="avatar" style="cursor: pointer;">Klik om een avatar te kiezen</label>
+<label for="avatar" style="cursor: pointer;">Klik hier om een avatar te kiezen</label>
 <input type="file"  accept="image/*" name="avatar" id="avatar"  onchange="loadFile(event)" style="display: none;">
 <img id="output" width="200" />
 </div>
 
 <div>
-    <label for="address">Adres</label>
-    <input type="text" id="address" name="address" placeholder="Provincie, Gemeente, Postcode">
+    <label for="description">Profieltekst (niet verplicht)</label>
+    <input type="text" id="description" name="description">
+</div>
+
+<div>
+    <label for="province">Woonplaats: provincie</label>
+    <input type="text" id="province" name="province" placeholder="bv. Vlaams-Brabant">
+</div>
+
+<div>
+    <label for="town">Woonplaats: gemeente/stad</label>
+    <input type="text" id="town" name="town" placeholder="bv. Mechelen">
 </div>
 
 <div>
