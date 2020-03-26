@@ -1,14 +1,33 @@
 <?php
 
-/*if(!empty($_POST)){
+include_once(__DIR__ . "/classes/userCompletion.php");
+
+session_start();
+
+
+
+$userComp = new UserComp;
+$userComp->setEmail($_SESSION["user"]);
+
+if(!empty($_POST)){
     try {
-        $avatar = $_POST["avatar"];
-        echo $avatar;
+        $img = $_FILES["avatar"]["name"];
+        $userComp->setImagePath($img);
+        $userComp->save();
+        move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img");
     } catch (\Throwable $th) {
         //throw $th;
     }
 }
-*/
+
+/*if(!empty($_POST)){
+    try {
+        
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+}*/
+
 ?>
 
 
@@ -23,7 +42,7 @@
     
 <section>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 
 <h2>Vervolledig je profiel</h2>
 
