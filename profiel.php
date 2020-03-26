@@ -9,6 +9,20 @@ $userPro->setUser($_SESSION["user"]);
 
 $data = $userPro->fetchData();
 
+$emailVerification = true;
+$required = "@student.thomasmore.be";
+$requiredVerification = true;
+$passwordVerification = true;
+$passwordMatch1 = true;
+$passwordMatch2 = true;
+$imgSizeOk = false;
+$descLengthOK = true;
+$securePassword;
+
+
+if(!empty($_POST)){
+    include_once(__DIR__ . "/classes/logicProfile.php");  
+}
 
 
 ?>
@@ -28,13 +42,13 @@ $data = $userPro->fetchData();
 
     <section>
     
-    <form action="" method="post" enctype="multipart/form-data">
+    <form id="form" action="" method="post" enctype="multipart/form-data">
     
     <?php if(isset($error)):?>
     <div class="error" style="color: red;"><?php echo $error;?></div>
     <?php endif;?>
 
-    <div>
+    <div id="oldAvatar">
     <img src="avatars/<?php echo $data["avatar"] ?>" alt="avatar">
     </div>
 
@@ -46,14 +60,14 @@ $data = $userPro->fetchData();
 
     <div>
     <p>Voornaam: <?php echo $data["firstname"] ?></p>
-    <label for="firstName">Verander voornaam</label>
-    <input type="text" id="firstName" name="firstName">
+    <label for="firstname">Verander voornaam</label>
+    <input type="text" id="firstname" name="firstname">
     </div>
 
     <div>
     <p>Familienaam: <?php echo $data["lastname"] ?></p>
-    <label for="lastName">Verander familienaam</label>
-    <input type="text" id="lastName" name="lastName">
+    <label for="lastname">Verander familienaam</label>
+    <input type="text" id="lastname" name="lastname">
     </div>
 
     <div>
@@ -117,7 +131,8 @@ $data = $userPro->fetchData();
     <p>Jaar: <?php echo $data["year"] ?></p>
     <label for="year">Verander jaar</label>
     <select name="year" id="year">
-        <option value="1IMD" selected="selected">1 IMD 👶</option>
+    <option id="select1" value="" selected="selected" disabled>Jaar</option>
+        <option value="1IMD">1 IMD 👶</option>
         <option value="2IMD">2 IMD 👩👨</option>
         <option value="3IMD">3 IMD 🧓👴</option>
     </select>
@@ -127,7 +142,8 @@ $data = $userPro->fetchData();
     <p>Passie: <?php echo $data["passion"] ?></p>
     <label for="passion">Verander passie</label>
     <select name="passion" id="passion">
-        <option value="Design" selected="selected">Design 🖌</option>
+    <option id="select2" value="" selected="selected" disabled>Passie</option>
+        <option value="Design">Design 🖌</option>
         <option value="Development">Development 💻</option>
         <option value="Design&Development">Design&Development 🖌💻</option>
     </select>
@@ -137,7 +153,8 @@ $data = $userPro->fetchData();
     <p>OS: <?php echo $data["os"] ?></p>
     <label for="os">Verander OS</label>
     <select name="os" id="os">
-        <option value="Windows" selected="selected">Windows</option>
+    <option id="select3" value="" selected="selected" disabled>OS</option>
+        <option value="Windows">Windows</option>
         <option value="Mac">Mac</option>
         <option value="Linux">Linux</option>
     </select>
@@ -147,7 +164,8 @@ $data = $userPro->fetchData();
     <p>Favoriet film genre: <?php echo $data["movie"] ?></p>
     <label for="movie">Verander favoriet film genre</label>
     <select name="movie" id="movie">
-        <option value="Actie" selected="selected">Actie ⚔</option>
+    <option id="select4" value="" selected="selected" disabled>Film genre</option>
+        <option value="Actie">Actie ⚔</option>
         <option value="Avontuur">Avontuur 🗺</option>
         <option value="Komedie">Komedie 🤣</option>
         <option value="Drama">Drama 😧</option>
@@ -162,7 +180,8 @@ $data = $userPro->fetchData();
     <p>Favoriet gaming platform: <?php echo $data["game"] ?></p>
     <label for="game">Verander favoriet gaming platform</label>
     <select name="game" id="game">
-        <option value="Playstation" selected="selected">Playstation 🎮</option>
+    <option id="select5" value="" selected="selected" disabled>Gaming platform</option>
+        <option value="Playstation">Playstation 🎮</option>
         <option value="Xbox">Xbox 🎮</option>
         <option value="PC">PC 💻</option>
         <option value="Nintendo">Nintendo 🕹</option>
@@ -175,7 +194,8 @@ $data = $userPro->fetchData();
     <p>Favoriet muziek genre: <?php echo $data["music"] ?></p>
     <label for="music">Verander favoriet muziek genre</label>
     <select name="music" id="music">
-        <option value="Rock" selected="selected">Rock 🎸</option>
+    <option id="select6" value="" selected="selected" disabled>Muziek genre</option>
+        <option value="Rock">Rock 🎸</option>
         <option value="Klassiek">Klassiek 🎻</option>
         <option value="Schlager">Schlager 🍻</option>
         <option value="Jazz">Jazz 🎷</option>
@@ -191,7 +211,8 @@ $data = $userPro->fetchData();
     <p>Favoriete sport: <?php echo $data["sport"] ?></p>
     <label for="sport">Verander favoriete sport</label>
     <select name="sport" id="sport">
-        <option value="Fitness" selected="selected">Fitness 🏋️‍♂️</option>
+    <option id="select7" value="" selected="selected" disabled>Sport</option>
+        <option value="Fitness">Fitness 🏋️‍♂️</option>
         <option value="Voetbal">Voetbal ⚽</option>
         <option value="Basketbal">Basketbal 🏀</option>
         <option value="Volleybal">Volleybal 🏐</option>
@@ -201,7 +222,7 @@ $data = $userPro->fetchData();
         <option value="geen">Ik sport niet 😭</option>
     </select>
     </div>
-
+  
     <div>
 	<input type="submit" id="submit" value="Bevestig veranderingen">	
     </div>
@@ -209,5 +230,7 @@ $data = $userPro->fetchData();
     </form>
     
     </section>
+    <script src="profiel.js"></script>
+    <script src="avatarUpdate.js"></script>
 </body>
 </html>

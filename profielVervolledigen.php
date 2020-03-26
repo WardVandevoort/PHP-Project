@@ -25,7 +25,7 @@ if(!empty($_POST)){
             $imgSizeOk = false;
         }
 
-        if(strlen($_POST["description"]) <= 301){
+        if(strlen($_POST["description"]) <= 300){
             $descLengthOK = true;
         }
         else{
