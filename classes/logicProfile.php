@@ -92,6 +92,7 @@ try {
     }
 
     
+    //   XSS protection!!!
 
     $fileSize = $_FILES["avatar"]["size"];
     if(!empty($fileSize)){
