@@ -4,7 +4,7 @@ include_once(__DIR__ . "/database.php");
 
 class UserComp{
     private $imagePath;
-    private $email;
+    private $id;
     private $year;
     private $description;
     private $province;
@@ -35,26 +35,6 @@ class UserComp{
             throw new Exception("Kies een profielfoto");
         }
         $this->imagePath = $imagePath;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of email
-     */ 
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set the value of email
-     *
-     * @return  self
-     */ 
-    public function setEmail($email)
-    {
-        $this->email = $email;
 
         return $this;
     }
@@ -266,15 +246,35 @@ class UserComp{
         return $this;
     }
 
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function save(){
         $conn = Database::getConnection();
         
         $statement = $conn->prepare("update users set avatar=:avatar, year=:year, description=:description, 
                                      province=:province, town=:town, passion=:passion, os=:os, movie=:movie,
-                                     game=:game, music=:music, sport=:sport, new=false where email like :email");
+                                     game=:game, music=:music, sport=:sport, new=false where id like :id");
         
         $imagePath = $this->getImagePath();
-        $email = $this->getEmail();
+        $id = $this->getId();
         $year = $this->getYear();
         $description = $this->getDescription();
         $province = $this->getProvince();
@@ -287,7 +287,7 @@ class UserComp{
         $sport = $this->getSport();
     
         $statement->bindValue(":avatar", $imagePath);
-        $statement->bindValue(":email", $email);
+        $statement->bindValue(":id", $id);
         $statement->bindValue(":year", $year);
         $statement->bindValue(":description", $description);
         $statement->bindValue(":province", $province);

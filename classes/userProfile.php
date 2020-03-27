@@ -343,7 +343,7 @@ class UserProfile{
     public function fetchData(){
         $conn = Database::getConnection();
         
-        $statement = $conn->prepare("select * from users where email like :user" );
+        $statement = $conn->prepare("select * from users where id like :user" );
 
         $user = $this->getUser();
 
@@ -374,7 +374,7 @@ class UserProfile{
         $statement = $conn->prepare("update users set avatar=:avatar, year=:year, description=:description, 
                                      province=:province, town=:town, passion=:passion, os=:os, movie=:movie,
                                      game=:game, music=:music, sport=:sport, firstname=:firstname, lastname=:lastname,
-                                     password=:password, email=:email where email like :user");
+                                     password=:password, email=:email where id like :user");
         
         $user = $this->getUser();  
         $firstname = $this->getFirstname();   

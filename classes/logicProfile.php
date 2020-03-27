@@ -30,6 +30,10 @@ try {
             }
         }
 
+        if($passwordMatch1 == true && $requiredVerification == true && $emailVerification == true){
+            $_SESSION["user"] = $_POST["email"];
+        }
+
     }
 
     if(empty($_POST["email"]) && !empty($_POST["emailVerification"])){
@@ -161,9 +165,7 @@ try {
     if($imgSizeOk == true && $descLengthOK == true && $emailVerification == true && $requiredVerification == true && $passwordVerification == true && $passwordMatch1 == true && $passwordMatch2 == true){
     $userPro->save();
     
-    move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img"); 
-
-    //session_destroy();   
+    move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img");   
 
     header("Location: index.php");
     }

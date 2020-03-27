@@ -5,7 +5,7 @@ include_once(__DIR__ . "/classes/userProfile.php");
 session_start();
 
 $userPro = new UserProfile;
-$userPro->setUser($_SESSION["user"]);
+$userPro->setUser($_SESSION["id"]);
 
 $data = $userPro->fetchData();
 

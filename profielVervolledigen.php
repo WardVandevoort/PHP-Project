@@ -7,7 +7,7 @@ session_start();
 
 
 $userComp = new UserComp;
-$userComp->setEmail($_SESSION["user"]);
+$userComp->setId($_SESSION["id"]);
 
 $imgSizeOk = false;
 $descLengthOK = true;

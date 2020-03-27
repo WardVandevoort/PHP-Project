@@ -51,7 +51,7 @@ class NewUser{
     public function FindData(){
         $conn = Database::getConnection();
         
-        $statement = $conn->prepare("select new from users where email like :email" );
+        $statement = $conn->prepare("select * from users where email like :email" );
 
         $email = $this->getEmail();
 
@@ -59,7 +59,7 @@ class NewUser{
 
         $statement->execute();
         
-        $data = $statement->fetchColumn();
+        $data = $statement->fetch(PDO::FETCH_ASSOC);
         
        return $data;
 
