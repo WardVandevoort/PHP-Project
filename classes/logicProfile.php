@@ -99,9 +99,11 @@ try {
     //   XSS protection!!!
 
     $fileSize = $_FILES["avatar"]["size"];
-    if(!empty($fileSize)){
+    if(!empty($_FILES["avatar"]["name"])){
         if($fileSize < 2000000){
+            $img = $_FILES["avatar"]["name"];
             $imgSizeOk = true;
+            $newImg = true;
         }
         else{
             throw new Exception("Je profielfoto heeft een grotere file size dan is toegelaten (max 2MB)");
@@ -110,10 +112,14 @@ try {
     }
     else{
         $_POST["avatar"] = $data["avatar"];
+        $img = $_POST["avatar"];
         $imgSizeOk = true;
+        $newImg = false;
     }
 
-    echo $data["avatar"];
+   
+
+    
     
 
     if(!empty($_POST["description"])){
@@ -144,7 +150,7 @@ try {
 
     var_dump($_POST);
 
-    $img = $_FILES["avatar"]["name"];
+    
 
     $userPro->setImagePath($img);
     $userPro->setEmail($_POST["email"]);
@@ -165,7 +171,9 @@ try {
     if($imgSizeOk == true && $descLengthOK == true && $emailVerification == true && $requiredVerification == true && $passwordVerification == true && $passwordMatch1 == true && $passwordMatch2 == true){
     $userPro->save();
     
+    if($newImg == true){
     move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img");   
+    }
 
     header("Location: index.php");
     }

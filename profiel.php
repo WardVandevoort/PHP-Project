@@ -18,6 +18,7 @@ $passwordMatch2 = true;
 $imgSizeOk = false;
 $descLengthOK = true;
 $securePassword;
+$newImg = false;
 
 
 if(!empty($_POST)){
