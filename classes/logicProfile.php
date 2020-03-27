@@ -95,9 +95,6 @@ try {
         }
     }
 
-    
-    //   XSS protection!!!
-
     $fileSize = $_FILES["avatar"]["size"];
     if(!empty($_FILES["avatar"]["name"])){
         if($fileSize < 2000000){
@@ -116,11 +113,6 @@ try {
         $imgSizeOk = true;
         $newImg = false;
     }
-
-   
-
-    
-    
 
     if(!empty($_POST["description"])){
 

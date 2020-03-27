@@ -60,19 +60,19 @@ if(!empty($_POST)){
     </div>
 
     <div>
-    <p>Voornaam: <?php echo $data["firstname"] ?></p>
+    <p>Voornaam: <?php echo htmlspecialchars($data["firstname"]) ?></p>
     <label for="firstname">Verander voornaam</label>
     <input type="text" id="firstname" name="firstname">
     </div>
 
     <div>
-    <p>Familienaam: <?php echo $data["lastname"] ?></p>
+    <p>Familienaam: <?php echo htmlspecialchars($data["lastname"]) ?></p>
     <label for="lastname">Verander familienaam</label>
     <input type="text" id="lastname" name="lastname">
     </div>
 
     <div>
-    <p>Email: <?php echo $data["email"] ?></p>
+    <p>Email: <?php echo htmlspecialchars($data["email"]) ?></p>
     </div>
 
     <div>
@@ -111,19 +111,19 @@ if(!empty($_POST)){
 
 
     <div>
-    <p>Profieltekst: <?php echo $data["description"] ?></p>
+    <p>Profieltekst: <?php echo htmlspecialchars($data["description"]) ?></p>
     <label for="description">Verander profieltekst</label>
     <input type="text" id="description" name="description">
     </div>
 
     <div>
-    <p>Provincie: <?php echo $data["province"] ?></p>
+    <p>Provincie: <?php echo htmlspecialchars($data["province"]) ?></p>
     <label for="province">Verander provincie</label>
     <input type="text" id="province" name="province" placeholder="bv. Vlaams-Brabant">
     </div>
 
     <div>
-    <p>Gemeente/stad: <?php echo $data["town"] ?></p>
+    <p>Gemeente/stad: <?php echo htmlspecialchars($data["town"]) ?></p>
     <label for="town">Verander gemeente/stad</label>
     <input type="text" id="town" name="town" placeholder="bv. Mechelen">
     </div>
