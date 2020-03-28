@@ -46,33 +46,45 @@ if(!empty($_POST)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/registratieLogin.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@500;700&display=swap');
+    </style> 
     <title>Document</title>
 </head>
 <body>
     
-<section>
+<section class="flex">
+
+<div id="logo-container">
+    <img src="images/woordlogo.png" alt="logo">
+</div>
 
 <form action="" method="post">
 
-<h2>Meld je aan</h2>
+    <h2>Meld je aan</h2>
 
-<?php if(isset($error)):?>
-<div class="error" style="color: red;"><?php echo $error;?></div>
-<?php endif;?>
+    <?php if(isset($error)):?>
+        <div class="error" style="color: white;">
+        <?php echo $error;?></div>
+    <?php endif;?>
 
-<div>
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email">
-</div>
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email">
+    </div>
 
-<div>
-    <label for="password">Paswoord</label>
-    <input type="password" id="password" name="password">
-</div>
+    <div>
+        <label for="password">Paswoord</label>
+        <input type="password" id="password" name="password">
+    </div>
 
-<div>
-	<input type="submit" value="Aanmelden">	
-</div>
+    <div class="submitBtn">
+	    <input type="submit" id="submitBtn" value="Aanmelden">	
+    </div>
+    <div class="registratieLink">
+        <a href="registratie.php">Nog geen account? Registreer hier.</a>
+    </div>
 
 </form>
 
