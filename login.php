@@ -46,10 +46,14 @@ if(!empty($_POST)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="css/registratieLogin.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@500;700&display=swap');
     </style> 
+=======
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+>>>>>>> c748767dd9943c388377e7ddace7e4b26be34391
     <title>Document</title>
 </head>
 <body>
