@@ -40,6 +40,10 @@ if($data["new"] == true){
 <?php include_once("inc.nav.php"); ?>
 
 <h1>Dit is de homepage</h1>
+<form action="search.php">
+    <input type="text" name="search" placeholder="Zoeken...">
+    <button type="submit" name="submit-search">Zoeken</button>
+</form>
 
 </body>
 </html>
