@@ -46,6 +46,7 @@ if(!empty($_POST)){
         $userComp->setGame($_POST["game"]);
         $userComp->setMusic($_POST["music"]);
         $userComp->setSport($_POST["sport"]);
+        $userComp->setBuddy($_POST["buddy"]);
        
         if($imgSizeOk == true && $descLengthOK == true){
         $userComp->save();
@@ -189,6 +190,16 @@ if(!empty($_POST)){
         </select>
     </div>
 
+    <div>
+        <label for="buddy">Ik ben hier</label>
+        <select name="buddy" id="buddy">
+            <option value="buddy" selected="selected">om een buddy te worden</option>
+            <option value="begleider1">om een begleider van 1IMD te zijn </option>
+            <option value="begleider2">om een begleider van 2IMD te zijn</option>
+        </select>
+    </div>
+    
+    
     <div class="submitBtn">
     	<input type="submit" id="submitBtn" value="Bevestig">	
     </div>

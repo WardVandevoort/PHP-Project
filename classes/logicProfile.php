@@ -159,6 +159,7 @@ try {
     $userPro->setGame($_POST["game"]);
     $userPro->setMusic($_POST["music"]);
     $userPro->setSport($_POST["sport"]);
+     $userPro->setBuddy($_POST["buddy"]);
    
     if($imgSizeOk == true && $descLengthOK == true && $emailVerification == true && $requiredVerification == true && $passwordVerification == true && $passwordMatch1 == true && $passwordMatch2 == true){
     $userPro->save();

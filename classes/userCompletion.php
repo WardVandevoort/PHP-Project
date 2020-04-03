@@ -15,6 +15,7 @@ class UserComp{
     private $game;
     private $music;
     private $sport;
+    private $buddy;
 
     /**
      * Get the value of imagePath
@@ -199,6 +200,25 @@ class UserComp{
 
         return $this;
     }
+    
+       /**
+     * Set the value of buddy
+     *
+     * @return  self
+     */ 
+    public function setBuddy($buddy)
+    {
+        $this->buddy = $buddy;
+
+        return $this;
+    }
+       /**
+     * Get the value of buddy
+     */ 
+    public function getBuddy()
+    {
+        return $this->buddy;
+    }
 
     /**
      * Get the value of province
@@ -271,7 +291,8 @@ class UserComp{
         
         $statement = $conn->prepare("update users set avatar=:avatar, year=:year, description=:description, 
                                      province=:province, town=:town, passion=:passion, os=:os, movie=:movie,
-                                     game=:game, music=:music, sport=:sport, new=false where id like :id");
+                                     game=:game, music=:music, sport=:sport, 
+                                     buddy=:buddy, new=false where id like :id");
         
         $imagePath = $this->getImagePath();
         $id = $this->getId();
@@ -285,6 +306,7 @@ class UserComp{
         $game = $this->getGame();
         $music = $this->getMusic();
         $sport = $this->getSport();
+        $buddy = $this->getBuddy();
     
         $statement->bindValue(":avatar", $imagePath);
         $statement->bindValue(":id", $id);
@@ -298,6 +320,7 @@ class UserComp{
         $statement->bindValue(":game", $game);
         $statement->bindValue(":music", $music);
         $statement->bindValue(":sport", $sport);
+        $statement->bindValue(":buddy", $buddy);
         
         $result = $statement->execute();
         

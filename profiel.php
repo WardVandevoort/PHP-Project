@@ -223,6 +223,16 @@ if(!empty($_POST)){
         <option value="geen">Ik sport niet 😭</option>
     </select>
     </div>
+    
+     <div>
+        <p>Ik ben hier: <?php echo $data["sport"] ?></p>
+        <label for="buddy">verander je doel</label>
+        <select name="buddy" id="buddy">
+            <option value="buddy" selected="selected">om een buddy te worden</option>
+            <option value="begleider1">om een begleider van 1IMD te zijn </option>
+            <option value="begleider2">om een begleider van 2IMD te zijn</option>
+        </select>
+    </div>
   
     <div>
 	<input type="submit" id="submit" value="Bevestig veranderingen">	
