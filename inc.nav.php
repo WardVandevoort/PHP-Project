@@ -1,4 +1,4 @@
-<nav>
+<div id="menuLinks">
 
 <a href="logout.php">Logout</a>
 
@@ -6,4 +6,4 @@
 
 <a href="profiel.php">Profiel</a>
 
-</nav>
+</div>

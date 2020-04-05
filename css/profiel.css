@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+}
+
+#nav-container{
+    display: flex;
+    width: 100%;
+    box-shadow: 0px 2px 18px grey;
+    background-color: white;
+    position: fixed;
+    justify-content: space-between;
+}
+#nav-container img{
+    width: 100px;
+    padding: 10px;
+}
+#burger{
+    width: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+#burger .line{
+    width: 30px;
+    background-color: black;
+    height: 5px;
+    border-radius: 5px;
+}
+#menuLinks{
+    position: fixed;
+    display: none;
+    margin-top: 50px;
+    padding-top: 20px;
+    background-color: white;
+    width: 100%;
+    border-bottom: 2px solid rgb(250,139,67);
+}
+#menuLinks a{
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    color: black;
+    margin: 20px auto;
+    padding-left: 50px;
+}
+#menuLinks a:hover, 
+#changeAvatar:hover,
+#changeEmail:hover,
+#changePass:hover{
+    color: rgba(239,52,84,1);
+    font-weight: bold;
+}
+
+h1{
+    padding-top: 80px;
+    font-family: 'Ubuntu', sans-serif;
+    color: rgb(250,139,67);
+    width: 90%;
+    margin: 0px auto;
+    font-size: 30px;
+}
+section{
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+
+}
+label{
+    display: block;
+}
+section div{
+    margin-top: 20px;
+}
+#passChange, #emailChange{
+    display: none;
+}
+#changeEmail, #changePass, #changeAvatar{
+    text-decoration: none;
+    color: rgb(250,139,67);
+}
+.inputField{
+    border: none;
+    padding: 10px 0px 10px 10px;
+    margin-top: 8px;
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 6px 6px 5px -6px rgb(151, 151, 151);
+}
+#changeProfile{
+    margin: 30px 0;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color:rgba(239,52,84,1);
+    color: white;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+#submitBtn{
+    margin: 40px 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #FA8B43;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
