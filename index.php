@@ -21,7 +21,7 @@ include_once(__DIR__ . "/classes/search.php");
 
 $dataSearch = null;
 
-if (isset($_POST['search'])){
+if (!empty($_POST['search'])){
 
    
    
