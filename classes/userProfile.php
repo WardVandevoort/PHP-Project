@@ -408,7 +408,9 @@ class UserProfile{
 
     //Get current active user
     public static function getCurrentUser($email){
+        
         $conn = Database::getConnection();
+
         $statement = $conn->prepare("select * from users where email = '$email'");
         $statement->execute();
         $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -438,7 +440,7 @@ class UserProfile{
     }
 
     public function getUserInfo($user){
-        $conn = Db::getConnection();
+        $conn = Database::getConnection();
         $statement = $conn->prepare("select user, firstname, lastname, avatar from users where id = '$user'");
 
         $statement->execute();
