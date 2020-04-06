@@ -388,6 +388,72 @@ class UserProfile{
         return $emailAdressen;
     }
 
+    // BEGIN FEATURE 7 --------------------------------------------------------
+
+
+    // 
+    public static function getCurrentPassion($passion){
+       
+        $conn = Database::getConnection();
+
+        $statement = $conn->prepare("select * from users where passion = '$passion'");
+        $statement->execute();
+        $passion = $statement->fetch(PDO::FETCH_ASSOC);
+        if(empty($passion)){
+                throw new Exception("We hebben niets gevonden!");
+        }
+
+        return $passion;
+    }
+
+    //Get current active user
+    public static function getCurrentUser($email){
+        $conn = Database::getConnection();
+        $statement = $conn->prepare("select * from users where email = '$email'");
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        if(empty($user)){
+                throw new Exception("current user not found.");
+        }else if(!empty($user)){
+            // var_dump($user);
+        }
+        return $user;
+}
+    
+    
+    public function getMatch($currentUser){
+        $conn = Database::getConnection();
+        $statement = $conn->prepare("select * from users where buddy != :lookingForBuddy and passion = :passion or movie = :movie" );
+
+        $statement->bindValue(":lookingForBuddy", !$currentUser->buddy);
+        $statement->bindValue(":passion", $currentUser->passion);
+        $statement->bindValue(":movie", $currentUser->movie);
+
+        $statement->execute();
+        $match = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if(empty($match)){
+            throw new Exception("no friends found.");
+        }
+        return $match;
+    }
+
+    public function getUserInfo($user){
+        $conn = Db::getConnection();
+        $statement = $conn->prepare("select user, firstname, lastname, avatar from users where id = '$user'");
+
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_OBJ);
+        return $user;
+    }
+
+
+
+
+    // EINDE FEATURE 7 ----------------------------------------------------------
+
+
+
     public function save(){
         $conn = Database::getConnection();
         

@@ -14,19 +14,6 @@
     width: 100px;
     padding: 10px;
 }
-#burger{
-    width: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-}
-#burger .line{
-    width: 30px;
-    background-color: #2D2D2D;
-    height: 4px;
-    border-radius: 5px;
-}
 #menuLinks{
     position: fixed;
     display: none;
