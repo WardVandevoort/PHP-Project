@@ -23,8 +23,8 @@
 }
 #burger .line{
     width: 30px;
-    background-color: black;
-    height: 5px;
+    background-color: #2D2D2D;
+    height: 4px;
     border-radius: 5px;
 }
 #menuLinks{
@@ -34,7 +34,20 @@
     padding-top: 20px;
     background-color: white;
     width: 100%;
-    border-bottom: 2px solid rgb(250,139,67);
+
+    text-align:center;
+    padding-bottom:5px;
+    background:
+    linear-gradient(
+      to left, 
+    rgba(250,139,67),
+    rgba(239,52,84,1)
+    )
+    left 
+    bottom
+    white
+    no-repeat; 
+    background-size:100% 2px ;
 }
 #menuLinks a{
     display: block;
@@ -44,12 +57,20 @@
     margin: 20px auto;
     padding-left: 50px;
 }
+@keyframes hoverLinks{
+    from{
+        color: rgb(250,139,67);
+    }to{
+        color: rgba(239,52,84,1);
+    }
+}
 #menuLinks a:hover, 
 #changeAvatar:hover,
 #changeEmail:hover,
 #changePass:hover{
-    color: rgba(239,52,84,1);
-    font-weight: bold;
+    animation-name: hoverLinks;
+    animation-duration: 0.5s;
+
 }
 
 h1{

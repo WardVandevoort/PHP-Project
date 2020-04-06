@@ -29,14 +29,26 @@ if(!empty($_POST)){
 ?>
 
 <script>
+    // function showNav(){
+    //     var navLinks = document.querySelector("#menuLinks");
+    //     if(navLinks.style.display === "block"){
+    //         navLinks.style.display = "none";
+    //     }else{
+    //         navLinks.style.display = "block";
+    //     }
+    // }
+
     function showNav(){
+        var hamburger = document.querySelector(".hamburger");
         var navLinks = document.querySelector("#menuLinks");
+        hamburger.classList.toggle("is-active");
         if(navLinks.style.display === "block"){
             navLinks.style.display = "none";
         }else{
             navLinks.style.display = "block";
         }
     }
+
     function showPassChange(){
         var passChange = document.querySelector("#passChange");
         if(passChange.style.display === "block"){
@@ -76,6 +88,7 @@ if(!empty($_POST)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/profiel.css"/>
+    <link rel="stylesheet" type="text/css" href="css/hamburger.css"/>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@500;700&display=swap');
@@ -87,13 +100,18 @@ if(!empty($_POST)){
 
     <div id="nav-container">
         <img src="images/woordlogo.png" alt="logo">
-        <a href='javascript:void();' onclick="showNav()" id="burger">
+        <!-- <a href='javascript:void();' onclick="showNav()" id="burger">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
-        </a>
-        
-    </div>
+        </a> -->
+        <button class="hamburger hamburger--spin" onclick="showNav()" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </div>   
+
     <?php include_once(__DIR__ . "/inc.nav.php"); ?>
     
 
