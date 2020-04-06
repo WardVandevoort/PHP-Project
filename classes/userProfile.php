@@ -20,6 +20,8 @@ class UserProfile{
     private $music;
     private $sport;
     private $buddy;
+
+
     /**
      * Get the value of user
      */ 
@@ -389,7 +391,7 @@ class UserProfile{
     }
 
     // BEGIN FEATURE 7 --------------------------------------------------------
-
+    
 
     // 
     public static function getCurrentPassion($passion){
@@ -408,7 +410,7 @@ class UserProfile{
 
     //Get current active user
     public static function getCurrentUser($email){
-        
+
         $conn = Database::getConnection();
 
         $statement = $conn->prepare("select * from users where email = '$email'");
@@ -420,25 +422,57 @@ class UserProfile{
             // var_dump($user);
         }
         return $user;
-}
-    
-    
-    public function getMatch($currentUser){
-        $conn = Database::getConnection();
-        $statement = $conn->prepare("select * from users where buddy != :lookingForBuddy and passion = :passion or movie = :movie" );
+    }
+    private $foundBuddy;
+    private $foundPassion;
+    private $foundMovie;
 
-        $statement->bindValue(":lookingForBuddy", !$currentUser->buddy);
-        $statement->bindValue(":passion", $currentUser->passion);
-        $statement->bindValue(":movie", $currentUser->movie);
+    public function getFoundBuddy(){
+        return $this->foundBuddy;
+    }
+    
+    // public function setFoundBuddy(){
+    //     $this->foundBuddy = $foundBuddy;
+    //     return $this;
+    // }
+
+
+    public function getFoundPassion(){
+        return $this->foundPassion;
+    }
+    
+    // public function setFoundPassion(){
+    //     $this->foundBuddy = $foundPassion;
+    //     return $this;
+    // }
+
+
+    public function getFoundMovie(){
+        return $this->foundMovie;
+    }
+    
+    // public function setFoundMovie(){
+    //     $this->foundBuddy = $foundMovie;
+    //     return $this;
+    // }
+
+
+        
+    public function getMatch(){
+        $conn = Database::getConnection();
+        $statement = $conn->prepare("SELECT * FROM users WHERE buddy != :foundbuddy AND passion LIKE :foundpassion OR movie LIKE :foundmovie" );
+
 
         $statement->execute();
         $match = $statement->fetchAll(PDO::FETCH_ASSOC);
         if(empty($match)){
             throw new Exception("no friends found.");
+            var_dump($match);
         }
         return $match;
     }
 
+    
     public function getUserInfo($user){
         $conn = Database::getConnection();
         $statement = $conn->prepare("select user, firstname, lastname, avatar from users where id = '$user'");
@@ -482,7 +516,12 @@ class UserProfile{
         $sport = $this->getSport();
         $buddy = $this->getBuddy();
         $password = $this->getPassword();
-    
+
+        $foundBuddy = $this->getFoundBuddy();
+        $foundPassion = $this->getFoundPassion();
+        $foundMovie = $this->getFoundMovie();
+
+
         $statement->bindValue(":user", $user);
         $statement->bindValue(":firstname", $firstname);
         $statement->bindValue(":lastname", $lastname);
@@ -500,6 +539,12 @@ class UserProfile{
         $statement->bindValue(":sport", $sport);
         $statement->bindValue(":buddy", $buddy);
         $statement->bindValue(":password", $password);
+
+        
+        $statement->bindValue(":foundBuddy", $foundBuddy);
+        $statement->bindValue(":foundPassion", $foundPassion);
+        $statement->bindValue(":foundMovie", $foundMovie);
+
         
         $result = $statement->execute();
         

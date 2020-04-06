@@ -41,7 +41,7 @@ try{
     $currentPassion = UserProfile::getCurrentPassion($user['passion']);
 
     //Get matching profiles
-    $allMatch = UserProfile::getMatch($currentPassion);
+    $allMatch = UserProfile::getMatch();
 
     $matchScores = array();
 
