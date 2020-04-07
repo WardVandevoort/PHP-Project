@@ -21,7 +21,7 @@ form div{
     margin: 0px auto;
     width: 90%;
 }
-#description, #province, #town, #year, #passion, #os, #movie, #game, #music, #sport, #buddy{
+#description, #province, #town, #year, #passion, #os, #movie, #game, #gamegenre, #music, #sport, #buddy{
     border: none;
     padding: 10px 0px 10px 10px;
     display: inline-block;
