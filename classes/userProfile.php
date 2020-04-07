@@ -17,6 +17,7 @@ class UserProfile{
     private $os;
     private $movie;
     private $game;
+    private $gamegenre;
     private $music;
     private $sport;
     private $buddy;
@@ -362,6 +363,26 @@ class UserProfile{
         return $this;
     }
 
+    /**
+     * Get the value of gamegenre
+     */ 
+    public function getGamegenre()
+    {
+        return $this->gamegenre;
+    }
+
+    /**
+     * Set the value of gamegenre
+     *
+     * @return  self
+     */ 
+    public function setGamegenre($gamegenre)
+    {
+        $this->gamegenre = $gamegenre;
+
+        return $this;
+    }
+
     public function fetchData(){
         $conn = Database::getConnection();
         
@@ -495,7 +516,7 @@ class UserProfile{
         
         $statement = $conn->prepare("update users set avatar=:avatar, year=:year, description=:description, 
                                      province=:province, town=:town, passion=:passion, os=:os, movie=:movie,
-                                     game=:game, music=:music, sport=:sport, 
+                                     game=:game, gamegenre=:gamegenre, music=:music, sport=:sport, 
                                      buddy=:buddy, firstname=:firstname, lastname=:lastname,
                                      password=:password, email=:email where id like :user");
         
@@ -512,6 +533,7 @@ class UserProfile{
         $os = $this->getOs();
         $movie = $this->getMovie();
         $game = $this->getGame();
+        $gamegenre = $this->getGamegenre();
         $music = $this->getMusic();
         $sport = $this->getSport();
         $buddy = $this->getBuddy();
@@ -535,6 +557,7 @@ class UserProfile{
         $statement->bindValue(":os", $os);
         $statement->bindValue(":movie", $movie);
         $statement->bindValue(":game", $game);
+        $statement->bindValue(":gamegenre", $gamegenre);
         $statement->bindValue(":music", $music);
         $statement->bindValue(":sport", $sport);
         $statement->bindValue(":buddy", $buddy);
@@ -554,6 +577,7 @@ class UserProfile{
         
         
     }
+
 }
 
 ?>

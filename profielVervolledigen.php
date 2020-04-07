@@ -44,6 +44,7 @@ if(!empty($_POST)){
         $userComp->setOs($_POST["os"]);
         $userComp->setMovie($_POST["movie"]);
         $userComp->setGame($_POST["game"]);
+        $userComp->setGamegenre($_POST["gamegenre"]);
         $userComp->setMusic($_POST["music"]);
         $userComp->setSport($_POST["sport"]);
         $userComp->setBuddy($_POST["buddy"]);
@@ -162,9 +163,24 @@ if(!empty($_POST)){
     </div>
 
     <div>
+        <label for="gamegenre">Favoriet game genre</label>
+        <select name="gamegenre" id="gamegenre">
+            <option value="Actie" selected="selected">Actie ⚔</option>
+            <option value="Avontuur">Avontuur 🗺</option>
+            <option value="Role-Playing">Role-Playing 🕵️‍♂️</option>
+            <option value="Simulatie">Simulatie 👨‍👩‍👧‍👦</option>
+            <option value="Strategie">Strategie 🧠</option>
+            <option value="Sport">Sport ⚽</option>
+            <option value="Racing">Racing 🚗</option>
+            <option value="geen">Ik game niet 😭</option>
+        </select>
+    </div>
+
+    <div>
         <label for="music">Favoriet muziek genre</label>
         <select name="music" id="music">
             <option value="Rock" selected="selected">Rock 🎸</option>
+            <option value="Metal">Metal 🤘</option>
             <option value="Klassiek">Klassiek 🎻</option>
             <option value="Schlager">Schlager 🍻</option>
             <option value="Jazz">Jazz 🎷</option>
