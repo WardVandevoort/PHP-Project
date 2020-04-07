@@ -541,9 +541,11 @@ class UserProfile{
         $statement->bindValue(":password", $password);
 
         
-        $statement->bindValue(":foundBuddy", $foundBuddy);
-        $statement->bindValue(":foundPassion", $foundPassion);
-        $statement->bindValue(":foundMovie", $foundMovie);
+// HIERONDER ZIT DE FOUT DAT UW PROFIEL NIET MEER UPDATE   
+
+        // $statement->bindValue(":foundBuddy", $foundBuddy);
+        // $statement->bindValue(":foundPassion", $foundPassion);
+        // $statement->bindValue(":foundMovie", $foundMovie);
 
         
         $result = $statement->execute();
