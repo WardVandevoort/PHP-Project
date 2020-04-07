@@ -157,6 +157,7 @@ try {
     $userPro->setOs($_POST["os"]);
     $userPro->setMovie($_POST["movie"]);
     $userPro->setGame($_POST["game"]);
+    $userPro->setGamegenre($_POST["gamegenre"]);
     $userPro->setMusic($_POST["music"]);
     $userPro->setSport($_POST["sport"]);
      $userPro->setBuddy($_POST["buddy"]);

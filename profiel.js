@@ -1,10 +1,11 @@
-let select1 = document.querySelector("#select1");
+    let select1 = document.querySelector("#select1");
     let select2 = document.querySelector("#select2");
     let select3 = document.querySelector("#select3");
     let select4 = document.querySelector("#select4");
     let select5 = document.querySelector("#select5");
     let select6 = document.querySelector("#select6");
     let select7 = document.querySelector("#select7");
+    let select8 = document.querySelector("#select8");
     let submit = document.querySelector("#submit");
     submit.addEventListener("click", function(){
        select1.removeAttribute("disabled");
@@ -14,5 +15,6 @@ let select1 = document.querySelector("#select1");
        select5.removeAttribute("disabled");
        select6.removeAttribute("disabled");
        select7.removeAttribute("disabled");
+       select8.removeAttribute("disabled");
      
     });

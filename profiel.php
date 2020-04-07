@@ -264,11 +264,28 @@ if(!empty($_POST)){
         </div>
 
         <div>
+        <p>Favoriet game genre: <?php echo $data["gamegenre"] ?></p>
+            <label for="gamegenre">Verander favoriet game genre</label>
+            <select class="inputField" name="gamegenre" id="gamegenre">
+                <option id="select8" value="" selected="selected" disabled>Game genre</option>
+                <option value="Actie">Actie ⚔</option>
+                <option value="Avontuur">Avontuur 🗺</option>
+                <option value="Role-Playing">Role-Playing 🕵️‍♂️</option>
+                <option value="Simulatie">Simulatie 👨‍👩‍👧‍👦</option>
+                <option value="Strategie">Strategie 🧠</option>
+                <option value="Sport">Sport ⚽</option>
+                <option value="Racing">Racing 🚗</option>
+                <option value="geen">Ik game niet 😭</option>
+            </select>
+        </div>
+
+        <div>
         <p>Favoriet muziek genre: <?php echo $data["music"] ?></p>
             <label for="music">Verander favoriet muziek genre</label>
             <select class="inputField" name="music" id="music">
                 <option id="select6" value="" selected="selected" disabled>Muziek genre</option>
                 <option value="Rock">Rock 🎸</option>
+                <option value="Metal">Metal 🤘</option>
                 <option value="Klassiek">Klassiek 🎻</option>
                 <option value="Schlager">Schlager 🍻</option>
                 <option value="Jazz">Jazz 🎷</option>
