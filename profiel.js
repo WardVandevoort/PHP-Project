@@ -6,6 +6,7 @@
     let select6 = document.querySelector("#select6");
     let select7 = document.querySelector("#select7");
     let select8 = document.querySelector("#select8");
+    let select9 = document.querySelector("#select9");
     let submit = document.querySelector("#submitBtn");
     
     submit.addEventListener("click", function(){
@@ -17,5 +18,6 @@
        select6.removeAttribute("disabled");
        select7.removeAttribute("disabled");
        select8.removeAttribute("disabled");
+       select9.removeAttribute("disabled");
 
     });

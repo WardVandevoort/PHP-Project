@@ -130,7 +130,10 @@ try {
     }
 
     foreach($_POST as $key1 => $post){
+        //echo($key1);
+        //echo($post);
         if(empty($post)){
+            
             foreach($data as $key2 => $item){
                 if($key1 == $key2){
                     $post = $item;
@@ -140,7 +143,7 @@ try {
         $_POST[$key1] = $post;
     }
 
-    var_dump($_POST["year"]);
+    
 
     
 
@@ -160,7 +163,10 @@ try {
     $userPro->setGamegenre($_POST["gamegenre"]);
     $userPro->setMusic($_POST["music"]);
     $userPro->setSport($_POST["sport"]);
-     $userPro->setBuddy($_POST["buddy"]);
+    $userPro->setBuddy($_POST["buddy"]);
+
+    //var_dump($data);
+    //var_dump($_POST);
    
     if($imgSizeOk == true && $descLengthOK == true && $emailVerification == true && $requiredVerification == true && $passwordVerification == true && $passwordMatch1 == true && $passwordMatch2 == true){
     $userPro->save();

@@ -314,10 +314,11 @@ if(!empty($_POST)){
         </div>
         
          <div>
-            <p>Ik ben hier: <?php echo $data["sport"] ?></p>
+            <p>Ik ben hier: <?php echo $data["buddy"] ?></p>
             <label for="buddy">verander je doel</label>
             <select class="inputField" name="buddy" id="buddy">
-                <option value="buddy" selected="selected">om een buddy te worden</option>
+                <option id="select9" value="" selected="selected" disabled>Doel</option>
+                <option value="buddy">om een buddy te worden</option>
                 <option value="begleider1">om een begleider van 1IMD te zijn </option>
                 <option value="begleider2">om een begleider van 2IMD te zijn</option>
             </select>

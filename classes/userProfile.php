@@ -539,9 +539,9 @@ class UserProfile{
         $buddy = $this->getBuddy();
         $password = $this->getPassword();
 
-        $foundBuddy = $this->getFoundBuddy();
+        /*$foundBuddy = $this->getFoundBuddy();
         $foundPassion = $this->getFoundPassion();
-        $foundMovie = $this->getFoundMovie();
+        $foundMovie = $this->getFoundMovie();*/
 
 
         $statement->bindValue(":user", $user);
