@@ -1,9 +1,9 @@
-<div id="menuLinks">
+<div id="menuLinks" class="">
 
-<a href="logout.php">Logout</a>
-
-<a href="index.php">Index</a>
+<a href="index.php">Home</a>
 
 <a href="profiel.php">Profiel</a>
+
+<a href="logout.php">Logout</a>
 
 </div>

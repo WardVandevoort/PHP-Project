@@ -444,6 +444,24 @@ class UserProfile{
         }
         return $user;
     }
+
+    //Get current active userNAME
+    public static function getCurrentUsername($email){
+
+        $conn = Database::getConnection();
+
+        $statement = $conn->prepare("select firstname from users where email = '$email'");
+        $statement->execute();
+        $username = $statement->fetch(PDO::FETCH_ASSOC);
+        if(empty($username)){
+                throw new Exception("current user not found.");
+        }else if(!empty($username)){
+            // var_dump($user);
+        }
+        return $username;
+    }
+
+
     private $foundBuddy;
     private $foundPassion;
     private $foundMovie;

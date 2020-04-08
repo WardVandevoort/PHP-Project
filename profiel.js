@@ -18,3 +18,34 @@
        select8.removeAttribute("disabled");
      
     });
+
+    
+// function showPassChange(){
+//     var passChange = document.querySelector("#passChange");
+//     if(passChange.style.display === "block"){
+//         passChange.style.display = "none";
+//     }else{
+//         passChange.style.display = "block";
+//     }
+// }
+
+
+var p = 0;
+function changeProfile(){
+    var changeProfileBtn = document.querySelector("#changeProfileBtn");
+    var submitBtn = document.querySelector("#submitBtn");
+    submitBtn.classList.toggle("hide");
+
+    
+    if(changeProfileBtn.innerHTML == "Profiel aanpassen"){
+        changeProfileBtn.innerHTML="Annuleren";
+    }else{
+        changeProfileBtn.innerHTML="Profiel aanpassen";
+    }
+
+    var inputFields = document.querySelectorAll(".showInput");
+    console.log(inputFields);
+     for (i = 0; i < inputFields.length; i++) {
+        inputFields[i].classList.toggle('show');
+    }
+}

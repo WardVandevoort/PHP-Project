@@ -1,120 +1,152 @@
-*{
+* {
     margin: 0;
 }
 
-#nav-container{
-    display: flex;
-    width: 100%;
-    box-shadow: 0px 2px 18px grey;
-    background-color: white;
-    position: fixed;
-    justify-content: space-between;
-}
-#nav-container img{
-    width: 100px;
-    padding: 10px;
-}
-#menuLinks{
-    position: fixed;
-    display: none;
-    margin-top: 50px;
-    padding-top: 20px;
-    background-color: white;
-    width: 100%;
-
-    text-align:center;
-    padding-bottom:5px;
-    background:
-    linear-gradient(
-      to left, 
-    rgba(250,139,67),
-    rgba(239,52,84,1)
-    )
-    left 
-    bottom
-    white
-    no-repeat; 
-    background-size:100% 2px ;
-}
-#menuLinks a{
-    display: block;
-    font-family: 'Open Sans', sans-serif;
-    text-decoration: none;
-    color: black;
-    margin: 20px auto;
-    padding-left: 50px;
-}
-@keyframes hoverLinks{
-    from{
-        color: rgb(250,139,67);
-    }to{
-        color: rgba(239,52,84,1);
-    }
-}
-#menuLinks a:hover, 
-#changeAvatar:hover,
-#changeEmail:hover,
-#changePass:hover{
-    animation-name: hoverLinks;
-    animation-duration: 0.5s;
-
-}
-
-h1{
-    padding-top: 80px;
+h1 {
+    
     font-family: 'Ubuntu', sans-serif;
-    color: rgb(250,139,67);
+    color: rgb(250, 139, 67);
     width: 90%;
     margin: 0px auto;
     font-size: 30px;
 }
-section{
+
+section {
     width: 90%;
     margin: 0 auto;
     font-family: 'Open Sans', sans-serif;
-
+    padding-top: 80px;
 }
-label{
+
+label {
     display: block;
 }
-section div{
+
+section div {
     margin-top: 20px;
 }
-#passChange, #emailChange{
+
+/* #passChange,
+#emailChange {
     display: none;
-}
-#changeEmail, #changePass, #changeAvatar{
+} */
+
+.changeLabel {
     text-decoration: none;
-    color: rgb(250,139,67);
+    color: rgb(250, 139, 67);
+    margin-top: 8px;
+    font-size: 14px;
 }
-.inputField{
+#changeAvatar{
+    text-align: center;
+    padding: 10px 20px;
+    background-color: none;
+    border-radius: 10px;
+    border: 2px solid #FA8B43;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.inputField {
     border: none;
     padding: 10px 0px 10px 10px;
     margin-top: 8px;
+    margin-bottom: 30px;
     background-color: rgb(243, 243, 243);
     width: 100%;
     border-radius: 10px;
     box-shadow: 6px 6px 5px -6px rgb(151, 151, 151);
+    display: none;
 }
-#changeProfile{
+div p{
+    font-weight: bold;
+}
+#oldAvatar img{
+    border-radius: 50%;
+    width: 150px;
+}
+#oldAvatar{
+    text-align: center;
+}
+.showInput{
+    display: none;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+#changeProfileBtn {
     margin: 30px 0;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
-    background-color:rgba(239,52,84,1);
+    background-color: rgba(239, 52, 84, 1);
+    border: 2px solid rgba(239, 52, 84, 1);
     color: white;
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
 }
-#submitBtn{
+#changeProfileBtn:hover{
+    background-color: transparent;
+    color: black;
+}
+
+#submitBtn {
     margin: 40px 0;
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
     background-color: #FA8B43;
+    border: 2px solid #FA8B43;
     color: white;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+}
+#submitBtn:hover{
+    background-color: transparent;
+    color: black;
+}
+
+
+@media (min-width: 800px) {
+
+    section{
+        width: 70%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    h1{
+        width: 70%;
+    }
+    form{
+        margin: 0 auto;
+        width: 70%;
+    }
+
+
+}
+@media (min-width: 992px){
+
+    h1{
+        font-size: 45px;
+    }
+    body{
+        background: rgb(250,139,67);
+        background: linear-gradient(90deg, rgba(250,139,67,1) 0%, rgba(239,52,84,1) 100%);
+    }
+    section{
+        background-color: white;
+        width: 70%;
+    }
+}
+@media (min-width: 1400px){
+    section{
+        width: 40%;
+    }
 }
