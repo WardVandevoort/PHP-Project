@@ -411,7 +411,7 @@ class UserProfile{
         return $emailAdressen;
     }
 
-    // BEGIN FEATURE 7 --------------------------------------------------------
+    /*// BEGIN FEATURE 7 --------------------------------------------------------
     
 
     // 
@@ -525,7 +525,7 @@ class UserProfile{
 
 
 
-    // EINDE FEATURE 7 ----------------------------------------------------------
+    // EINDE FEATURE 7 ----------------------------------------------------------*/
 
 
 
@@ -557,9 +557,9 @@ class UserProfile{
         $buddy = $this->getBuddy();
         $password = $this->getPassword();
 
-        $foundBuddy = $this->getFoundBuddy();
+        /*$foundBuddy = $this->getFoundBuddy();
         $foundPassion = $this->getFoundPassion();
-        $foundMovie = $this->getFoundMovie();
+        $foundMovie = $this->getFoundMovie();*/
 
 
         $statement->bindValue(":user", $user);

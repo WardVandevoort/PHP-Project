@@ -1,4 +1,4 @@
-<?php 
+<?php /*
 
 
 include_once(__DIR__ . "/classes/userProfile.php");
@@ -97,4 +97,4 @@ try{
       }
     endif;
   ?>
-</div>
+</div>*/
