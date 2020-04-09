@@ -55,7 +55,7 @@ include_once(__DIR__."/buddyMatch.php");
 
     <?php include_once("inc.nav.php"); ?>
 
-    <h1>Hallo <?php  ?></h1>
+    <h1>Hallo<?php  ?></h1>
 
     <div>
         <h2>Zoek hier naar buddy's ! Zoeken kan op naam of interesses.</h2>
@@ -81,9 +81,16 @@ if( $dataSearch != null) {
     <div>
         <h2>Wij hebben x student(en) gevonden met gelijke interesses!</h2>
         
+        <?php foreach($buddyData as $buddy): ?>
         <div>
+        
+        <img src="avatars/<?php echo $buddy["avatar"] ?>" alt="avatar">
+        <h3><?php echo $buddy["firstname"] ?></h3>
+        <h4><?php echo $buddy["year"] ?></h4>
+        <p>Gelijke interesses:</p>
 
         </div>
+        <?php endforeach; ?>
     </div>
 
     <script src="nav.js"></script>

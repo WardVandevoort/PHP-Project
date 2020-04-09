@@ -9,12 +9,17 @@ $userData = $buddy->FetchUser();
 
 switch($userData["buddy"]){
     case "buddy":
-        echo "buddy";
+        $buddy->setGoal($userData["buddy"]);
     break;
 
     case "begeleider":
-        echo "begeleider";
+        $buddy->setGoal($userData["buddy"]);
     break;
 }
+
+$buddyData = $buddy->FetchBuddies();
+
+
+
 
 ?>
