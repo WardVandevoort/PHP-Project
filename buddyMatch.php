@@ -21,5 +21,4 @@ $buddyData = $buddy->FetchBuddies();
 
 
 
-
 ?>

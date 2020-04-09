@@ -3,7 +3,9 @@ let loadFile = function(event) {
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
 
-let year = document.querySelector("#year");
+//   Code hieronder is om begeleider optie te verbergen als je een eerstejaars bent
+
+/*let year = document.querySelector("#year");
 
 year.addEventListener("change", function(){
 
@@ -11,5 +13,5 @@ year.addEventListener("change", function(){
 		console.log("newb");
 	}
 
-});
+});*/
 

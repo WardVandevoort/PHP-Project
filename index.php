@@ -79,14 +79,14 @@ if( $dataSearch != null) {
 } ?>
 
     <div>
-        <h2>Wij hebben x student(en) gevonden met gelijke interesses!</h2>
+        <h2>Wij hebben <?php echo count($buddyData) ?> student(en) gevonden met gelijke interesses!</h2>
         
         <?php foreach($buddyData as $buddy): ?>
         <div>
         
         <img src="avatars/<?php echo $buddy["avatar"] ?>" alt="avatar">
-        <h3><?php echo $buddy["firstname"] ?></h3>
-        <h4><?php echo $buddy["year"] ?></h4>
+        <h3><?php echo htmlspecialchars($buddy["firstname"]) ?></h3>
+        <h4><?php echo htmlspecialchars($buddy["year"]) ?></h4>
         <p>Gelijke interesses:</p>
 
         </div>
