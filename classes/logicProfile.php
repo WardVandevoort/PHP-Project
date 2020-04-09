@@ -130,8 +130,7 @@ try {
     }
 
     foreach($_POST as $key1 => $post){
-        //echo($key1);
-        //echo($post);
+       
         if(empty($post)){
             
             foreach($data as $key2 => $item){
@@ -164,9 +163,6 @@ try {
     $userPro->setMusic($_POST["music"]);
     $userPro->setSport($_POST["sport"]);
     $userPro->setBuddy($_POST["buddy"]);
-
-    //var_dump($data);
-    //var_dump($_POST);
    
     if($imgSizeOk == true && $descLengthOK == true && $emailVerification == true && $requiredVerification == true && $passwordVerification == true && $passwordMatch1 == true && $passwordMatch2 == true){
     $userPro->save();

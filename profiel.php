@@ -246,9 +246,8 @@ if(!empty($_POST)){
                 <label for="buddy" class="showInput changeLabel">verander je doel</label>
                 <select class="inputField showInput" name="buddy" id="buddy">
                 <option id="select9" value="" selected="selected" disabled>Doel</option>
-                    <option value="buddy">om een buddy te worden</option>
-                    <option value="begleider1">om een begleider van 1IMD te zijn </option>
-                    <option value="begleider2">om een begleider van 2IMD te zijn</option>
+                    <option value="buddy">om een buddy te zijn</option>
+                    <option value="begeleider">om een begeleider te zijn </option>
                 </select>
             </div>
 

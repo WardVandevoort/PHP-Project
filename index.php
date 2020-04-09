@@ -30,6 +30,7 @@ if (!empty($_POST['search'])){
         }
 }
 
+include_once(__DIR__."/buddyMatch.php");
 
 ?>
 
@@ -79,7 +80,7 @@ if( $dataSearch != null) {
 
     <div>
         <h2>Wij hebben x student(en) gevonden met gelijke interesses!</h2>
-        <?php include_once(__DIR__."/buddyMatch.php"); ?>
+        
         <div>
 
         </div>

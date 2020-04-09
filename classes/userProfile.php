@@ -411,124 +411,6 @@ class UserProfile{
         return $emailAdressen;
     }
 
-    /*// BEGIN FEATURE 7 --------------------------------------------------------
-    
-
-    // 
-    public static function getCurrentPassion($passion){
-       
-        $conn = Database::getConnection();
-
-        $statement = $conn->prepare("select * from users where passion = '$passion'");
-        $statement->execute();
-        $passion = $statement->fetch(PDO::FETCH_ASSOC);
-        if(empty($passion)){
-                throw new Exception("We hebben niets gevonden!");
-        }
-
-        return $passion;
-    }
-
-    //Get current active user
-    public static function getCurrentUser($email){
-
-        $conn = Database::getConnection();
-
-        $statement = $conn->prepare("select * from users where email = '$email'");
-        $statement->execute();
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
-        if(empty($user)){
-                throw new Exception("current user not found.");
-        }else if(!empty($user)){
-            // var_dump($user);
-        }
-        return $user;
-    }
-
-    //Get current active userNAME
-    public static function getCurrentUsername($email){
-
-        $conn = Database::getConnection();
-
-        $statement = $conn->prepare("select firstname from users where email = '$email'");
-        $statement->execute();
-        $username = $statement->fetch(PDO::FETCH_ASSOC);
-        if(empty($username)){
-                throw new Exception("current user not found.");
-        }else if(!empty($username)){
-            // var_dump($user);
-        }
-        return $username;
-    }
-
-
-    private $foundBuddy;
-    private $foundPassion;
-    private $foundMovie;
-
-    public function getFoundBuddy(){
-        return $this->foundBuddy;
-    }
-    
-    // public function setFoundBuddy(){
-    //     $this->foundBuddy = $foundBuddy;
-    //     return $this;
-    // }
-
-
-    public function getFoundPassion(){
-        return $this->foundPassion;
-    }
-    
-    // public function setFoundPassion(){
-    //     $this->foundBuddy = $foundPassion;
-    //     return $this;
-    // }
-
-
-    public function getFoundMovie(){
-        return $this->foundMovie;
-    }
-    
-    // public function setFoundMovie(){
-    //     $this->foundBuddy = $foundMovie;
-    //     return $this;
-    // }
-
-
-        
-    public function getMatch(){
-        $conn = Database::getConnection();
-        $statement = $conn->prepare("SELECT * FROM users WHERE buddy != :foundbuddy AND passion LIKE :foundpassion OR movie LIKE :foundmovie" );
-
-
-        $statement->execute();
-        $match = $statement->fetchAll(PDO::FETCH_ASSOC);
-        if(empty($match)){
-            throw new Exception("no friends found.");
-            var_dump($match);
-        }
-        return $match;
-    }
-
-    
-    public function getUserInfo($user){
-        $conn = Database::getConnection();
-        $statement = $conn->prepare("select user, firstname, lastname, avatar from users where id = '$user'");
-
-        $statement->execute();
-
-        $user = $statement->fetch(PDO::FETCH_OBJ);
-        return $user;
-    }
-
-
-
-
-    // EINDE FEATURE 7 ----------------------------------------------------------*/
-
-
-
     public function save(){
         $conn = Database::getConnection();
         
@@ -557,11 +439,6 @@ class UserProfile{
         $buddy = $this->getBuddy();
         $password = $this->getPassword();
 
-        /*$foundBuddy = $this->getFoundBuddy();
-        $foundPassion = $this->getFoundPassion();
-        $foundMovie = $this->getFoundMovie();*/
-
-
         $statement->bindValue(":user", $user);
         $statement->bindValue(":firstname", $firstname);
         $statement->bindValue(":lastname", $lastname);
@@ -580,13 +457,6 @@ class UserProfile{
         $statement->bindValue(":sport", $sport);
         $statement->bindValue(":buddy", $buddy);
         $statement->bindValue(":password", $password);
-
-        
-// HIERONDER ZIT DE FOUT DAT UW PROFIEL NIET MEER UPDATE   
-
-        // $statement->bindValue(":foundBuddy", $foundBuddy);
-        // $statement->bindValue(":foundPassion", $foundPassion);
-        // $statement->bindValue(":foundMovie", $foundMovie);
 
         
         $result = $statement->execute();
