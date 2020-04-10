@@ -6,6 +6,7 @@ class BuddyMatch{
 
 private $user;
 private $goal;
+private $match;
 
 
 /**
@@ -48,6 +49,27 @@ $this->goal = $goal;
 return $this;
 }
 
+/**
+ * Get the value of match
+ */ 
+public function getMatch()
+{
+return $this->match;
+}
+
+/**
+ * Set the value of match
+ *
+ * @return  self
+ */ 
+public function setMatch($match)
+{
+$this->match = $match;
+
+return $this;
+}
+
+
 public function fetchUser(){
     $conn = Database::getConnection();
     
@@ -81,6 +103,23 @@ public function fetchBuddies(){
     
     return $buddyData;
 }
+
+public function fetchMatch(){
+    $conn = Database::getConnection();
+    
+    $statement = $conn->prepare("select * from users where id like :match" );
+
+    $match = $this->getMatch();
+
+    $statement->bindValue(":match", $match);
+
+    $statement->execute();
+    
+    $matchData = $statement->fetch(PDO::FETCH_ASSOC);
+    
+    return $matchData;
+}
+
 
 }
 

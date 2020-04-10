@@ -79,60 +79,82 @@ if( $dataSearch != null) {
 } ?>
 
     <div>
-        <h2>Wij hebben <?php echo count($buddyData) ?> student(en) gevonden met gelijke interesses!</h2>
+        <h2>Wij hebben x student(en) gevonden met gelijke interesses!</h2>
         
-        <?php foreach($buddyData as $buddy){ ?>
-        <div>
+        <?php 
         
-        <img src="avatars/<?php echo $buddy["avatar"] ?>" alt="avatar">
-        <h3><?php echo htmlspecialchars($buddy["firstname"]) ?></h3>
-        <h4><?php echo htmlspecialchars($buddy["year"]) ?></h4>
-        <p>Gelijke interesses:</p>
 
-        <?php foreach($buddy as $key1 => $item1){
-                  foreach($userData as $key2 => $user){
-                      $interest = true;
-                      switch($key2){
-                          case "firstname":
-                            $interest = false;
-                          break;
-
-                          case "lastname":
-                            $interest = false;
-                          break;
-
-                          case "description":
-                            $interest = false;
-                          break;
-
-                          case "year":
-                            $interest = false;
-                          break;
-
-                          case "avatar":
-                            $interest = false;
-                          break;
-
-                          case "new":
-                            $interest = false;
-                          break;
-
-                          case "buddy":
-                            $interest = false;
-                          break;
-                      }
-
-                      if($interest == true){
-                        if($key1 == $key2 && $item1 == $user){ ?>
-                            <p><?php echo htmlspecialchars($key1 . " = " . $item1) ?></p>
-                <?php }
-                      }
-                  } 
-                }
+        foreach($commonInterests as $common){
+            $buddy = new BuddyMatch();
+            $buddy->setMatch($common["id"]);
+            $matchData = $buddy->FetchMatch();
         ?>
 
+        <!-- Met de class buddyProposals kan je de css van de voorgestelde buddies veranderen --> 
+
+        <div class="buddyProposals">
+        
+        <img src="avatars/<?php echo $matchData["avatar"] ?>" alt="avatar">
+        <h3><?php echo htmlspecialchars($matchData["firstname"]) ?></h3>
+        <h4><?php echo htmlspecialchars($matchData["year"]) ?></h4>
+        <p>Gelijke interesses:</p>
+
+        <?php foreach($matchData as $key1 => $match){
+            foreach($userData as $key2 => $user){
+               
+                $interest = true;
+
+            switch($key2){
+               case "firstname":
+               $interest = false;
+               break;
+     
+               case "lastname":
+               $interest = false;
+               break;
+     
+               case "description":
+               $interest = false;
+               break;
+     
+               case "year":
+               $interest = false;
+               break;
+     
+               case "avatar":
+               $interest = false;
+               break;
+     
+               case "new":
+               $interest = false;
+               break;
+     
+               case "buddy":
+               $interest = false;
+               break;
+          }
+
+            if($interest == true){
+                
+              if($key1 == $key2 && $match == $user){ ?>
+                
+                <p><?php echo htmlspecialchars($key1 . " = " . $match) ?></p>
+
+            <?php }
+                  
+    
+            }
+            }
+        } 
+        ?>
+        
+                
+            
+             
+             
+            
         </div>
-        <?php } ?>
+        <?php }  ?> 
     </div>
 
     <script src="nav.js"></script>
