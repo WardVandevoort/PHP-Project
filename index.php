@@ -91,9 +91,42 @@ if( $dataSearch != null) {
 
         <?php foreach($buddy as $key1 => $item1){
                   foreach($userData as $key2 => $user){
-                      if($key1 == $key2 && $item1 == $user){ ?>
-                          <p><?php echo htmlspecialchars($key1 . " = " . $item1) ?></p>
+                      $interest = true;
+                      switch($key2){
+                          case "firstname":
+                            $interest = false;
+                          break;
+
+                          case "lastname":
+                            $interest = false;
+                          break;
+
+                          case "description":
+                            $interest = false;
+                          break;
+
+                          case "year":
+                            $interest = false;
+                          break;
+
+                          case "avatar":
+                            $interest = false;
+                          break;
+
+                          case "new":
+                            $interest = false;
+                          break;
+
+                          case "buddy":
+                            $interest = false;
+                          break;
+                      }
+
+                      if($interest == true){
+                        if($key1 == $key2 && $item1 == $user){ ?>
+                            <p><?php echo htmlspecialchars($key1 . " = " . $item1) ?></p>
                 <?php }
+                      }
                   } 
                 }
         ?>
