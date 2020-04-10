@@ -85,9 +85,11 @@ if( $dataSearch != null) {
         
 
         foreach($commonInterests as $common){
+            if($common["teller"] >= 4){
             $buddy = new BuddyMatch();
             $buddy->setMatch($common["id"]);
             $matchData = $buddy->FetchMatch();
+            
         ?>
 
         <!-- Met de class buddyProposals kan je de css van de voorgestelde buddies veranderen --> 
@@ -154,7 +156,9 @@ if( $dataSearch != null) {
              
             
         </div>
-        <?php }  ?> 
+        <?php
+            }
+        }  ?> 
     </div>
 
     <script src="nav.js"></script>
