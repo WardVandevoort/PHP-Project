@@ -81,7 +81,7 @@ if( $dataSearch != null) {
     <div>
         <h2>Wij hebben <?php echo count($buddyData) ?> student(en) gevonden met gelijke interesses!</h2>
         
-        <?php foreach($buddyData as $buddy): ?>
+        <?php foreach($buddyData as $buddy){ ?>
         <div>
         
         <img src="avatars/<?php echo $buddy["avatar"] ?>" alt="avatar">
@@ -89,8 +89,17 @@ if( $dataSearch != null) {
         <h4><?php echo htmlspecialchars($buddy["year"]) ?></h4>
         <p>Gelijke interesses:</p>
 
+        <?php foreach($buddy as $key1 => $item1){
+                  foreach($userData as $key2 => $user){
+                      if($key1 == $key2 && $item1 == $user){ ?>
+                          <p><?php echo htmlspecialchars($key1 . " = " . $item1) ?></p>
+                <?php }
+                  } 
+                }
+        ?>
+
         </div>
-        <?php endforeach; ?>
+        <?php } ?>
     </div>
 
     <script src="nav.js"></script>
