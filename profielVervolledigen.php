@@ -209,8 +209,8 @@ if(!empty($_POST)){
     <div>
         <label for="buddy">Ik ben hier</label>
         <select name="buddy" id="buddy">
-            <option value="buddy" selected="selected">om een buddy te zijn</option>
-            <option value="begeleider">om een begeleider te zijn</option>
+            <option id="beBuddy" value="buddy" selected="selected">om een buddy te zijn</option>
+            <option id="begeleider" value="begeleider">om een begeleider te zijn</option>
         </select>
     </div>
     

@@ -53,3 +53,38 @@ function changeProfile(){
     }
 }
 
+let year = document.querySelector("#year");
+let dbYear = document.querySelector("#dbYear").innerHTML;
+
+if(dbYear == "1IMD"){
+	document.querySelector("#begeleider").setAttribute("disabled", true);
+}
+
+if(dbYear == "3IMD"){
+	document.querySelector("#beBuddy").setAttribute("disabled", true);
+}
+
+year.addEventListener("change", function(){
+
+    document.querySelector("#select9").selected = false;
+
+	if(year.value == "1IMD"){
+		document.querySelector("#begeleider").setAttribute("disabled", true);
+		document.querySelector("#begeleider").selected = false;
+		document.querySelector("#beBuddy").removeAttribute("disabled");
+		document.querySelector("#beBuddy").selected = true;
+		
+	}
+	else if(year.value == "3IMD"){
+		document.querySelector("#beBuddy").setAttribute("disabled", true);
+		document.querySelector("#beBuddy").selected = false;
+		document.querySelector("#begeleider").removeAttribute("disabled");
+		document.querySelector("#begeleider").selected = true;
+	}
+	else{
+		document.querySelector("#begeleider").removeAttribute("disabled");
+		document.querySelector("#beBuddy").removeAttribute("disabled");
+	}
+
+});
+

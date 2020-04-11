@@ -129,7 +129,7 @@ if(!empty($_POST)){
             </div>
 
             <div>
-                <p>Jaar: <?php echo $data["year"] ?></p>
+                <p>Jaar: <span id="dbYear"><?php echo $data["year"] ?></span></p>
                 <label for="year" class="showInput changeLabel">Verander jaar</label>
                 <select class="inputField showInput" name="year" id="year">
                     <option id="select1" value="" selected="selected" disabled>Jaar</option>
@@ -246,8 +246,8 @@ if(!empty($_POST)){
                 <label for="buddy" class="showInput changeLabel">verander je doel</label>
                 <select class="inputField showInput" name="buddy" id="buddy">
                 <option id="select9" value="" selected="selected" disabled>Doel</option>
-                    <option value="buddy">om een buddy te zijn</option>
-                    <option value="begeleider">om een begeleider te zijn </option>
+                    <option id="beBuddy" value="buddy">om een buddy te zijn</option>
+                    <option id="begeleider" value="begeleider">om een begeleider te zijn </option>
                 </select>
             </div>
 
