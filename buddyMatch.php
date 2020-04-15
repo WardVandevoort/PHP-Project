@@ -60,14 +60,9 @@ foreach($buddyData as $buddy){
                 
               if($key1 == $key2 && $item1 == $user){ 
                 $teller++;
-
-
               }
-                  
-    
             }
         }
-
     } 
 
     $commonInterests[] = [
@@ -75,15 +70,13 @@ foreach($buddyData as $buddy){
             "id" => $buddy["id"]
             
         
-        ];
-
-
+    ];
     
-
 }
 arsort($commonInterests);
 
 
 
+  
 
 ?>

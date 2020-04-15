@@ -37,6 +37,7 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/profiel.css" />
     <link rel="stylesheet" type="text/css" href="css/navigatie.css" />
+    <script src="jquery-3.4.1.min.js"></script>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@500;700&display=swap');
@@ -50,7 +51,6 @@ if(!empty($_POST)){
     <h1>Profiel</h1>
 
     <section class="flex">
-            <h1>Profiel</h1>
 
         <form id="form" action="" method="post" enctype="multipart/form-data">
 
@@ -58,8 +58,11 @@ if(!empty($_POST)){
             <div class="error" style="color: red;"><?php echo $error;?></div>
             <?php endif;?>
 
-            <div id="oldAvatar">
-                <img src="avatars/<?php echo $data["avatar"] ?>" alt="avatar">
+            <div id="nameImg">
+                <div id="oldAvatar">
+                    <img src="avatars/<?php echo $data["avatar"] ?>" alt="avatar">
+                </div>
+                <h1>Jouw profiel</h1>
             </div>
 
             <div>
@@ -245,7 +248,7 @@ if(!empty($_POST)){
                 <p>Ik ben hier: <?php echo $data["buddy"] ?></p>
                 <label for="buddy" class="showInput changeLabel">verander je doel</label>
                 <select class="inputField showInput" name="buddy" id="buddy">
-                <option id="select9" value="" selected="selected" disabled>Doel</option>
+                    <option id="select9" value="" selected="selected" disabled>Doel</option>
                     <option id="beBuddy" value="buddy">om een buddy te zijn</option>
                     <option id="begeleider" value="begeleider">om een begeleider te zijn </option>
                 </select>
@@ -253,7 +256,7 @@ if(!empty($_POST)){
 
             <div>
                 <input type="submit" id="submitBtn" class="hide" value="Bevestig veranderingen">
-            <a href='javascript:void();' id="changeProfileBtn" onclick="changeProfile()">Profiel aanpassen</a>
+                <a href='javascript:void();' id="changeProfileBtn" onclick="changeProfile()">Profiel aanpassen</a>
 
             </div>
 

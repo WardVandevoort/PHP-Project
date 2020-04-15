@@ -1,5 +1,7 @@
 /* hamburger menu */
-
+*{
+  box-sizing: border-box;
+}
 .hamburger {
   padding: 15px 15px;
   display: inline-block;
@@ -121,12 +123,13 @@
   background-color: white;
   position: fixed;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 1000;
 }
 
 #nav-container img {
+  margin: 15px;
+  object-fit: cover;
   width: 100px;
-  padding: 15px;
 }
 
 #menuLinks {
@@ -144,6 +147,7 @@
       rgba(250, 139, 67),
       rgba(239, 52, 84, 1)) left bottom white no-repeat;
   background-size: 100% 2px;
+  z-index: 3;
 }
 
 #menuLinks a, #webNav a{

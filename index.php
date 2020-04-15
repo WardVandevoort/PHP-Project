@@ -34,6 +34,14 @@ include_once(__DIR__."/buddyMatch.php");
 
 ?>
 
+<script>
+    function reply_click(clicked_id){
+        var clicked_id;
+        console.log(clicked_id);
+        window.location.href = "buddyProfiel.php?buddyId=" + clicked_id;
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,18 +59,27 @@ include_once(__DIR__."/buddyMatch.php");
 
 <body>
 
-    <?php include_once(__DIR__ . "/inc.hamburger.php"); ?>
+    <?php 
+    include_once(__DIR__ . "/inc.hamburger.php");
+    include_once("inc.nav.php"); 
+    include_once(__DIR__ . "/classes/userProfile.php");
+    ?>
 
-    <?php include_once("inc.nav.php"); ?>
+    <div id="headerContainer">
+        <div id="bgContainer">
+            <h1>Hallo <?php echo htmlspecialchars($data["firstname"]) ?>!</h1>
+        </div>
 
-    <h1>Hallo<?php  ?></h1>
-
-    <div>
-        <h2>Zoek hier naar buddy's ! Zoeken kan op naam of interesses.</h2>
-        <form action="index.php" method="POST">
-            <input type="text" name="search" placeholder="Zoeken...">
-            <button type="submit" name="submit-search">Zoeken</button>
-        </form>
+        <div id="userMatchCount">
+            <div id="totalUsers">
+                <p class="number">185</p>
+                <p>Mimir gebruikers</p>
+            </div>
+            <div id="totalMatches">
+                <p class="number">68</p>
+                <p>Matches gecreëerd</p>
+            </div>
+        </div>
     </div>
 
     <?php 
@@ -78,90 +95,117 @@ if( $dataSearch != null) {
     <?php }
 } ?>
 
-    <div>
-        <h2>Wij hebben x student(en) gevonden met gelijke interesses!</h2>
-        
-        <?php 
-        
+    <h2 id="matchesTitle">
+        Wij hebben <?php echo count($commonInterests); ?> student(en) gevonden met gelijke
+            interesses!
+    </h2>
 
-        foreach($commonInterests as $common){
-            if($common["teller"] >= 4){
-            $buddy = new BuddyMatch();
-            $buddy->setMatch($common["id"]);
-            $matchData = $buddy->FetchMatch();
+    <div id="scroll">
+    <div id="buddyProposalsContainer">
+    <?php 
+        
+    foreach($commonInterests as $common){
+        if($common["teller"] >= 4){
+        $buddy = new BuddyMatch();
+        $buddy->setMatch($common["id"]);
+        $matchData = $buddy->FetchMatch();
             
-        ?>
+    ?>
 
-        <!-- Met de class buddyProposals kan je de css van de voorgestelde buddies veranderen --> 
+        <!-- Met de class buddyProposals kan je de css van de voorgestelde buddies veranderen -->
 
-        <div class="buddyProposals">
-        
-        <img src="avatars/<?php echo $matchData["avatar"] ?>" alt="avatar">
-        <h3><?php echo htmlspecialchars($matchData["firstname"]) ?></h3>
-        <h4><?php echo htmlspecialchars($matchData["year"]) ?></h4>
-        <p>Gelijke interesses:</p>
+        <a  href="#" 
+            class="buddyProposals" 
+            id="<?php echo $common["id"];?>"
+            onClick="reply_click(this.id)"
+            >
 
-        <?php foreach($matchData as $key1 => $match){
-            foreach($userData as $key2 => $user){
+            <img src="avatars/<?php echo $matchData["avatar"] ?>" alt="avatar">
+            <div id="titlesFlex">
+                <h3><?php echo htmlspecialchars($matchData["firstname"]) ?></h3>
+                <h4><?php echo htmlspecialchars($matchData["year"]) ?></h4>
+            </div>
+            <div id="interesses">
+                <p id="interessesTitle">Gelijke interesses:</p>
+
+                <?php 
+                foreach($matchData as $key1 => $match){
+                    foreach($userData as $key2 => $user){
                
-                $interest = true;
+                        $interest = true;
 
-            switch($key2){
-               case "firstname":
-               $interest = false;
-               break;
+                        switch($key2){
+                            case "firstname":
+                            $interest = false;
+                            break;
      
-               case "lastname":
-               $interest = false;
-               break;
+                            case "lastname":
+                            $interest = false;
+                            break;
      
-               case "description":
-               $interest = false;
-               break;
+                            case "description":
+                            $interest = false;
+                            break;
      
-               case "year":
-               $interest = false;
-               break;
+                            case "year":
+                            $interest = false;
+                            break;
      
-               case "avatar":
-               $interest = false;
-               break;
+                            case "avatar":
+                            $interest = false;
+                            break;
      
-               case "new":
-               $interest = false;
-               break;
+                            case "new":
+                            $interest = false;
+                            break;
      
-               case "buddy":
-               $interest = false;
-               break;
-          }
+                            case "buddy":
+                            $interest = false;
+                            break;
+                        }
 
-            if($interest == true){
-                
-              if($key1 == $key2 && $match == $user){ ?>
-                
-                <p><?php echo htmlspecialchars($key1 . " = " . $match) ?></p>
-
-            <?php }
-                  
-    
-            }
-            }
-        } 
-        ?>
+                        if($interest == true){
+                            if($key1 == $key2 && $match == $user){ ?>
+                                <div class="interesse">
+                                    <p>
+                                        <?php echo htmlspecialchars($key1) ?>: &nbsp;
+                                    </p>
+                                    <p style="font-weight:bold">
+                                        <?php echo htmlspecialchars($match) ?>
+                                    </p>
+                                </div>
+                            <?php 
+                            }
+                        }
+                    }
+                }
+                ?>
+            </div>
+        </a>
         
-                
-            
-             
-             
-            
-        </div>
+        
         <?php
-            }
-        }  ?> 
+        }
+    } 
+    ?>
+
+    </div>
+    </div>
+
+    <div id="searchBuddiesContainer">
+        <h2>Of zoek hier naar buddy's !</h2>
+        <p>Zoeken kan op naam of interesses.</p>
+        <form action="index.php" method="POST">
+            <input type="text" name="search" placeholder="Zoeken...">
+            <button type="submit" name="submit-search">Zoeken</button>
+        </form>
     </div>
 
     <script src="nav.js"></script>
+    <script src="index.js"></script>
+
+
+    
 
 </body>
 
