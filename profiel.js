@@ -1,3 +1,5 @@
+
+
     let select1 = document.querySelector("#select1");
     let select2 = document.querySelector("#select2");
     let select3 = document.querySelector("#select3");
@@ -7,9 +9,9 @@
     let select7 = document.querySelector("#select7");
     let select8 = document.querySelector("#select8");
     let select9 = document.querySelector("#select9");
-    let submit = document.querySelector("#submitBtn");
+    let submitBtn = document.querySelector("#submitBtn");
     
-    submit.addEventListener("click", function(){
+    submitBtn.addEventListener("click", function(){
        select1.removeAttribute("disabled");
        select2.removeAttribute("disabled");
        select3.removeAttribute("disabled");

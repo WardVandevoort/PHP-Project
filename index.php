@@ -32,6 +32,8 @@ if (!empty($_POST['search'])){
 
 include_once(__DIR__."/buddyMatch.php");
 
+
+
 ?>
 
 <script>
@@ -59,10 +61,27 @@ include_once(__DIR__."/buddyMatch.php");
 
 <body>
 
+
     <?php 
     include_once(__DIR__ . "/inc.hamburger.php");
     include_once("inc.nav.php"); 
     include_once(__DIR__ . "/classes/userProfile.php");
+
+    ?>
+
+    
+    <?php 
+    
+    $e = new UserProfile();
+
+    $allUsers = $e->getAllUsers();
+    $allMatches = $e->getAllMatches();
+
+
+    $allUsers = implode(" ", $allUsers);
+    $allMatches = implode(" ", $allMatches);
+
+
     ?>
 
     <div id="headerContainer">
@@ -72,17 +91,18 @@ include_once(__DIR__."/buddyMatch.php");
 
         <div id="userMatchCount">
             <div id="totalUsers">
-                <p class="number">185</p>
+                <p class="number"><?php echo $allUsers; ?></p>
                 <p>Mimir gebruikers</p>
             </div>
             <div id="totalMatches">
-                <p class="number">68</p>
+                <p class="number"><?php echo $allMatches; ?></p>
                 <p>Matches gecreëerd</p>
             </div>
         </div>
     </div>
 
     <?php 
+
 
 if( $dataSearch != null) {
     foreach($dataSearch as $result){ ?>
@@ -99,6 +119,7 @@ if( $dataSearch != null) {
         Wij hebben <?php echo count($commonInterests); ?> student(en) gevonden met gelijke
             interesses!
     </h2>
+
 
     <div id="scroll">
     <div id="buddyProposalsContainer">
@@ -181,6 +202,7 @@ if( $dataSearch != null) {
                 }
                 ?>
             </div>
+            
         </a>
         
         
@@ -189,7 +211,11 @@ if( $dataSearch != null) {
     } 
     ?>
 
+
+    
+
     </div>
+
     </div>
 
     <div id="searchBuddiesContainer">
@@ -200,6 +226,12 @@ if( $dataSearch != null) {
             <button type="submit" name="submit-search">Zoeken</button>
         </form>
     </div>
+
+    <?php if(isset($error)):?>
+        <div class="error" style="color: white;">
+        <?php echo $error;?></div>
+    <?php endif;?>
+    
 
     <script src="nav.js"></script>
     <script src="index.js"></script>

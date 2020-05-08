@@ -398,6 +398,24 @@ class BuddyProfile{
 
     }
 
+    public function fetchFriends(){
+        $conn = Database::getConnection();
+
+        $statement = $conn->prepare("SELECT user_1 FROM friends
+        WHERE
+            (user_2 = :user_1)");
+        
+        $user = $this->getUser();
+
+        $statement->bindValue(":user_1", $user);
+
+        $statement->execute();
+        
+        $friends = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $friends;
+    }
+
 
 
 

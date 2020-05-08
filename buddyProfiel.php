@@ -9,7 +9,52 @@ $buddyPro->setUser($_GET["buddyId"]);
 
 $data = $buddyPro->fetchBuddy();
 
+
+$profile = new BuddyProfile();
+$profile->setUser($_SESSION['id']);
+$result = $profile->fetchFriends();
+
+// var_dump($result);
+
 ?>
+
+<?php 
+    include_once(__DIR__ . "/classes/buddyRequest.php");
+
+    // $_POST["sendBuddyRequest"] --> is de button om een vriendschapsverzoek te versturen
+    if(!empty($_POST["sendBuddyRequest"])){
+
+        try {
+            $newRequest = new Request();
+
+            // verzender
+            $newRequest->setSender($_SESSION['id']);
+            // ontvanger
+            $newRequest->setReceiver($_GET["buddyId"]);
+
+            // als $duplicate true teruggeeft, is er al een vriendschapsverzoek tussen de twee users, en zou er geen vriendschapsverzoek mogen gestuurd worden (moet ik nog verder aanvullen met een if statement)
+            $duplicate = $newRequest->searchDuplicate();
+
+            // functie die een vriendschapsverzoek stuurt
+            if(!$duplicate){
+                $mailMsg = "Je hebt een nieuw buddy-verzoek op Mimir!";
+                $mailMsg = wordwrap($mailMsg);
+                mail($data["email"], "Nieuw buddy-voorstel", $mailMsg);
+                // mail("bo_leynen_@hotmail.com", "Nieuw buddy-voorstel", $mailMsg);
+                $newRequest->sendRequest();
+                $error = "Buddy verzoek verzonden!";
+            }else{
+                $error = "Je hebt al een vriendschapsverzoek open staan met deze persoon!";
+            }
+
+        } catch (\Throwable $th) {
+            $error = $th -> getMessage();
+        }
+
+    }
+
+    
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +83,12 @@ $data = $buddyPro->fetchBuddy();
             </div>
 
             <h1><?php echo htmlspecialchars($data["firstname"]." ".$data["lastname"]) ?></h1>
+            
         </div>
+        <form method="post" id="request-form">
+                <input type="submit" id="send-request-btn" name="sendBuddyRequest" value="Buddy verzoek sturen">
+            </form>
+        
         <?php if(isset($error)):?>
             <div class="error" style="color: red;"><?php echo $error;?></div>
         <?php endif;?>
@@ -87,15 +137,19 @@ $data = $buddyPro->fetchBuddy();
             </tr>
             <tr>
                 <td>Rol:</td>
-                <td><?php echo $data["buddy"] ?></td>
+                <td><?php echo $data["buddy"];?></td>
             </tr>
 
 
         
         </table>
 
+        <div>
+
+        </div>
+        
+
     </section>
-    <script src="profiel.js"></script>
     <script src="nav.js"></script>
     <script src="avatarUpdate.js"></script>
 

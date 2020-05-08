@@ -262,6 +262,8 @@ if(!empty($_POST)){
 
         </form>
 
+        
+
     </section>
     <script src="profiel.js"></script>
     <script src="nav.js"></script>

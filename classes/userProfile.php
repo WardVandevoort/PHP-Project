@@ -21,6 +21,8 @@ class UserProfile{
     private $music;
     private $sport;
     private $buddy;
+    private $totalUsers;
+    private $totalMatches;
 
 
     /**
@@ -466,6 +468,75 @@ class UserProfile{
         
     }
 
+
+    /**
+     * Get the value of totalUsers
+     */ 
+    public function getTotalUsers()
+    {
+        return $this->totalUsers;
+    }
+
+    /**
+     * Set the value of totalUsers
+     *
+     * @return  self
+     */ 
+    public function setTotalUsers($totalUsers)
+    {
+        $this->totalUsers = $totalUsers;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalMatches
+     */ 
+    public function getTotalMatches()
+    {
+        return $this->totalMatches;
+    }
+
+    /**
+     * Set the value of totalMatches
+     *
+     * @return  self
+     */ 
+    public function setTotalMatches($totalMatches)
+    {
+        $this->totalMatches = $totalMatches;
+
+        return $this;
+    }
+
+    public function getAllUsers(){
+        $conn = Database::getConnection();
+        
+        $statement = $conn->prepare("select count(*) from users");
+        
+        $statement->execute();
+        
+        $totalUsers = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $totalUsers;
+
+    }
+
+    public function getAllMatches(){
+        $conn = Database::getConnection();
+        
+        $statement = $conn->prepare("select count(*) from friends where status = 1");
+        
+        $statement->execute();
+        
+        $totalMatches = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return $totalMatches;
+
+    }
+
 }
+
+
 
 ?>

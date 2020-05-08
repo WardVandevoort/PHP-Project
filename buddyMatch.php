@@ -75,8 +75,4 @@ foreach($buddyData as $buddy){
 }
 arsort($commonInterests);
 
-
-
-  
-
 ?>
