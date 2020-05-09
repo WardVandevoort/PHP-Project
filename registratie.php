@@ -1,6 +1,6 @@
 <?php
 
-include_once(__DIR__ . "/classes/userRegistration.php");
+include_once(__DIR__ . "/classes/User.php");
 
 $emailVerification = true;
 $required = "@student.thomasmore.be";

@@ -92,8 +92,8 @@ $buddies = $findBuddy->fetchFriends();
 
     </main>
 
-    <script src="nav.js"></script>
-    <script src="chat.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 
 </html>

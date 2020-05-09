@@ -1,12 +1,12 @@
 <?php
 
-include_once(__DIR__ . "/classes/userCompletion.php");
+include_once(__DIR__ . "/classes/User.php");
 
 session_start();
 
 
 
-$userComp = new UserComp;
+$userComp = new User;
 $userComp->setId($_SESSION["id"]);
 
 $imgSizeOk = false;
@@ -50,7 +50,7 @@ if(!empty($_POST)){
         $userComp->setBuddy($_POST["buddy"]);
        
         if($imgSizeOk == true && $descLengthOK == true){
-        $userComp->save();
+        $userComp->completion();
         
         move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img"); 
         header("Location: index.php");
@@ -224,7 +224,7 @@ if(!empty($_POST)){
 
 </section>
 
-<script src="profielVervolledigen.js"></script>
+<script src="js/profielVervolledigen.js"></script>
 
 </body>
 </html>

@@ -172,6 +172,6 @@ if(!empty($_GET["approveBuddyRequest"])){
 
 </body>
 
-<script src="nav.js"></script>
+<script src="js/nav.js"></script>
 
 </html>

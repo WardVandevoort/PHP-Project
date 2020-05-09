@@ -1,7 +1,7 @@
 <?php
 
 try {
-    $emailAdressen = UserProfile::getEmails();
+    $emailAdressen = User::getEmails();
 
     if(!empty($_POST["email"]) && empty($_POST["emailVerification"])){
         throw new Exception("Kan emailadres niet veranderen, want wachtwoord is niet ingevuld");
@@ -165,7 +165,7 @@ try {
     $userPro->setBuddy($_POST["buddy"]);
    
     if($imgSizeOk == true && $descLengthOK == true && $emailVerification == true && $requiredVerification == true && $passwordVerification == true && $passwordMatch1 == true && $passwordMatch2 == true){
-    $userPro->save();
+    $userPro->saveChanges();
     
     if($newImg == true){
     move_uploaded_file($_FILES["avatar"]["tmp_name"], "avatars/$img");   

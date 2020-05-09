@@ -1,10 +1,10 @@
 <?php
 
-include_once(__DIR__ . "/classes/userProfile.php");
+include_once(__DIR__ . "/classes/User.php");
 
 session_start();
 
-$userPro = new UserProfile;
+$userPro = new User;
 $userPro->setUser($_SESSION["id"]);
 
 $data = $userPro->fetchData();
@@ -265,9 +265,9 @@ if(!empty($_POST)){
         
 
     </section>
-    <script src="profiel.js"></script>
-    <script src="nav.js"></script>
-    <script src="avatarUpdate.js"></script>
+    <script src="js/profiel.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/avatarUpdate.js"></script>
 </body>
 
 </html>

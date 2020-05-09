@@ -1,11 +1,11 @@
 <?php
-include_once(__DIR__ . "/classes/loginVerification.php");
+include_once(__DIR__ . "/classes/User.php");
 
 $passwordMatch = true;
 
 if(!empty($_POST)){
     try {
-        $verification = new Verification();
+        $verification = new User();
         $verification->setEmail($_POST["email"]);
         $verification->setPassword($_POST["password"]);
 
