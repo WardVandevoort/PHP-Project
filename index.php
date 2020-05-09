@@ -4,6 +4,10 @@ include_once(__DIR__ . "/classes/newUser.php");
 
 session_start();
 
+if(empty($_SESSION["user"])){
+    header("Location: login.php");
+}
+
 $newUser = new NewUser();
 $newUser->setEmail($_SESSION["user"]);
 

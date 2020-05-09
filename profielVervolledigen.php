@@ -4,6 +4,10 @@ include_once(__DIR__ . "/classes/User.php");
 
 session_start();
 
+if(empty($_SESSION["id"])){
+    header("Location: login.php");
+}
+
 
 
 $userComp = new User;

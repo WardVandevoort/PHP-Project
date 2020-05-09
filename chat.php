@@ -5,6 +5,10 @@ include_once(__DIR__ . "/classes/chats.php");
 
 session_start();
 
+if(empty($_SESSION["id"])){
+    header("Location: login.php");
+}
+
 $findBuddy = new Request();
 
 $findBuddy->setUser($_SESSION['id']);
