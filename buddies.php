@@ -1,6 +1,7 @@
 <?php 
 
 include_once(__DIR__ . "/classes/buddyRequest.php");
+include_once(__DIR__ . "/classes/saveReason.php");
 
 session_start();
 
@@ -42,11 +43,28 @@ if(!empty($_GET["approveBuddyRequest"])){
 
     $denied->denyRequest();
 
-    header("Location: buddies.php");
 
     $message = "Buddy verzoek geweigerd!";
 
+    $id = $_GET['denyBuddyRequest'];
+
+    $reasonDenied = $_COOKIE['reason'.$id];
+
+    $saveReason = new SaveReason();
+
+    $saveReason->setReason($reasonDenied);
+    $saveReason->setBuddyRequestReceiver($_SESSION['id']);
+    $saveReason->setBuddyRequestSender($_GET['denyBuddyRequest']);
+
+    $saveReason->saveReason();
+
+    header("Location: buddies.php");
+
+
 }
+
+
+
 
 
 
@@ -60,6 +78,7 @@ if(!empty($_GET["approveBuddyRequest"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/navigatie.css" />
     <link rel="stylesheet" type="text/css" href="css/buddies.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu:wght@500;700&display=swap');
@@ -82,6 +101,8 @@ if(!empty($_GET["approveBuddyRequest"])){
         <div>
 
             <h2>Jouw buddies</h2>
+
+            
 
             <ul>
 
@@ -173,5 +194,6 @@ if(!empty($_GET["approveBuddyRequest"])){
 </body>
 
 <script src="nav.js"></script>
+<script src="buddies.js"></script>
 
 </html>

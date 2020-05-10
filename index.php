@@ -81,7 +81,6 @@ include_once(__DIR__."/buddyMatch.php");
     $allUsers = implode(" ", $allUsers);
     $allMatches = implode(" ", $allMatches);
 
-
     ?>
 
     <div id="headerContainer">
@@ -102,6 +101,7 @@ include_once(__DIR__."/buddyMatch.php");
     </div>
 
     <?php 
+
 
 
 if( $dataSearch != null) {

@@ -240,6 +240,22 @@ class Request{
         return $result;
     }
 
+    public function getNotification(){
+        $conn = Database::getConnection();
+
+        $statement = $conn->prepare("SELECT * from friends WHERE user_2 = :user_2 && status = 0");
+
+        $receiver = $this->getReceiver();
+
+        $statement->bindValue(":user_2", $receiver);
+
+        $result = $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
 }
 
 

@@ -13,7 +13,6 @@ $buddies = $findBuddy->fetchFriends();
 
 
 
-
 ?>
 
 <!DOCTYPE html>

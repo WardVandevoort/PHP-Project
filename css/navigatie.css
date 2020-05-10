@@ -205,6 +205,13 @@
   border-radius: 5px;
   display: inline-block;
   margin-right: 5px;
+}
+
+.visible{
+  display: inline-block;
+}
+
+.not-visible{
   display: none;
 }
 
@@ -231,3 +238,4 @@
     padding-left: 100px;
   }
 }
+
