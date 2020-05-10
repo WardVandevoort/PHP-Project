@@ -5,6 +5,10 @@ include_once(__DIR__ . "/classes/chats.php");
 
 session_start();
 
+if(empty($_SESSION["id"])){
+    header("Location: login.php");
+}
+
 $findBuddy = new Request();
 
 $findBuddy->setUser($_SESSION['id']);
@@ -91,8 +95,8 @@ $buddies = $findBuddy->fetchFriends();
 
     </main>
 
-    <script src="nav.js"></script>
-    <script src="chat.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 
 </html>

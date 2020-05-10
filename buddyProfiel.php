@@ -4,6 +4,10 @@ include_once(__DIR__ . "/classes/buddyProfile.php");
 
 session_start();
 
+if(empty($_SESSION["id"])){
+    header("Location: login.php");
+}
+
 $buddyPro = new BuddyProfile();
 $buddyPro->setUser($_GET["buddyId"]);
 
@@ -150,7 +154,7 @@ $result = $profile->fetchFriends();
         
 
     </section>
-    <script src="nav.js"></script>
+    <script src="js/nav.js"></script>
     <script src="avatarUpdate.js"></script>
 
 

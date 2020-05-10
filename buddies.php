@@ -5,6 +5,10 @@ include_once(__DIR__ . "/classes/saveReason.php");
 
 session_start();
 
+if(empty($_SESSION["id"])){
+    header("Location: login.php");
+}
+
 $findBuddy = new Request();
 
 $findBuddy->setUser($_SESSION['id']);
@@ -193,7 +197,6 @@ if(!empty($_GET["approveBuddyRequest"])){
 
 </body>
 
-<script src="nav.js"></script>
-<script src="buddies.js"></script>
+<script src="js/nav.js"></script>
 
 </html>

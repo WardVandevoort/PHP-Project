@@ -4,6 +4,10 @@ include_once(__DIR__ . "/classes/newUser.php");
 
 session_start();
 
+if(empty($_SESSION["user"])){
+    header("Location: login.php");
+}
+
 $newUser = new NewUser();
 $newUser->setEmail($_SESSION["user"]);
 
@@ -65,14 +69,14 @@ include_once(__DIR__."/buddyMatch.php");
     <?php 
     include_once(__DIR__ . "/inc.hamburger.php");
     include_once("inc.nav.php"); 
-    include_once(__DIR__ . "/classes/userProfile.php");
+    include_once(__DIR__ . "/classes/User.php");
 
     ?>
 
     
     <?php 
     
-    $e = new UserProfile();
+    $e = new User();
 
     $allUsers = $e->getAllUsers();
     $allMatches = $e->getAllMatches();
@@ -233,8 +237,8 @@ if( $dataSearch != null) {
     <?php endif;?>
     
 
-    <script src="nav.js"></script>
-    <script src="index.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/index.js"></script>
 
 
     
